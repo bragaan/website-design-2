@@ -1,0 +1,2040 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bragn. — интерьерный дизайн и живопись · Анастасия Брагинец</title>
+<meta name="description" content="Bragn. — авторский интерьер и живопись. Частные дома и квартиры, планировочные решения, 3D-визуализация, рабочая документация. Дизайнер и художник Анастасия Брагинец.">
+<meta name="theme-color" content="#F2EDE4">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bragn.">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Bragn. — interior &amp; art">
+<meta property="og:description" content="Авторский интерьер и живопись. Пространство, в котором видно руку.">
+<meta property="og:url" content="https://website-design-gamma-seven.vercel.app/">
+<meta property="og:image" content="https://website-design-gamma-seven.vercel.app/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bragn. — подпись автора на кремовом фоне">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bragn. — interior &amp; art">
+<meta name="twitter:description" content="Авторский интерьер и живопись.">
+<meta name="twitter:image" content="https://website-design-gamma-seven.vercel.app/assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 220'%3E%3Crect width='200' height='220' fill='%23F2EDE4'/%3E%3Cpath d='M18 196 L18 96 L70 40 L122 96 L122 196 Z' fill='%2319191C'/%3E%3Ccircle cx='160' cy='64' r='19' fill='%2319191C'/%3E%3C/svg%3E">
+
+<!-- Шрифты: Commissioner (заголовки), Golos Text (текст), Caveat (рукописные пометки) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Commissioner:wght@400;500;600&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind: локальная копия, при её отсутствии подключается CDN -->
+<script src="assets/vendor/tailwind.js"></script>
+<script>if(!window.tailwind){document.write('<scr'+'ipt src="https://cdn.tailwindcss.com"><\/scr'+'ipt>');}</script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream:  '#F2EDE4',
+        paper:  '#FBF9F6',
+        white:  '#FFFFFF',
+        choco:  '#3D2D2E',
+        ink:    '#19191C',
+        muted:  '#8A8378',
+        deep:   '#6F6862',
+        line:   '#DED8CE',
+        accent: '#A23100'
+      },
+      fontFamily: {
+        display: ['Commissioner', 'system-ui', 'sans-serif'],
+        sans:    ['"Golos Text"', 'system-ui', 'sans-serif'],
+        hand:    ['Caveat', 'cursive']
+      },
+      screens: { md: '768px', lg: '1200px' },
+      borderRadius: { none: '0' },
+      maxWidth: { shell: '1560px' }
+    }
+  }
+}
+</script>
+
+<style>
+/* ─────────────────────────── ТОКЕНЫ ─────────────────────────── */
+:root{
+  --cream:#F2EDE4;
+  --paper:#FBF9F6;
+  --white:#FFFFFF;
+  --choco:#3D2D2E;
+  --ink:#19191C;
+  --muted:#8A8378;        /* брендбук: подписи и метаданные */
+  --deep:#6F6862;         /* веб-вариант подписи: контраст ≥ 4.5:1 */
+  --line:#DED8CE;
+  --accent:#A23100;
+
+  --shell:1560px;
+  --pad: clamp(20px, 4.2vw, 68px);
+  --ease: cubic-bezier(.16,1,.3,1);
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ─────────────────────────── БАЗА ─────────────────────────── */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+html:focus-within{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Golos Text', system-ui, sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:'kern' 1, 'liga' 1;
+  overflow-x:hidden;
+  overflow-x:clip;   /* clip, а не hidden: иначе ломается position:sticky */
+}
+body.is-locked{ overflow:hidden; }
+::selection{ background:var(--ink); color:var(--cream); }
+img,svg{ display:block; max-width:100%; }
+img{ height:auto; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+h1,h2,h3,h4,p,figure,blockquote{ margin:0; }
+ul,ol{ margin:0; padding:0; list-style:none; }
+hr{ border:0; border-top:1px solid var(--line); margin:0; }
+
+/* Бумажное зерно поверх всего — очень тихо */
+body::after{
+  content:''; position:fixed; inset:0; z-index:90; pointer-events:none;
+  opacity:.05; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─────────────────────────── СЕТКА ─────────────────────────── */
+.shell{ width:100%; max-width:var(--shell); margin-inline:auto; padding-inline:var(--pad); }
+.rule{ border-top:1px solid var(--ink); }
+.rule-soft{ border-top:1px solid rgba(25,25,28,.16); }
+.section{ padding-block: clamp(5.5rem, 11vw, 11rem); }
+
+/* ─────────────────────────── ТИПОГРАФИКА ─────────────────────────── */
+.display{
+  font-family:'Commissioner', system-ui, sans-serif;
+  font-weight:500;
+  letter-spacing:-.028em;
+  line-height:.94;
+  text-wrap:balance;
+}
+.display-xl{ font-size:clamp(2.9rem, 8.4vw, 8.6rem); }
+.display-l { font-size:clamp(2.3rem, 5.6vw, 4.6rem); }
+.display-m { font-size:clamp(1.7rem, 3.1vw, 2.7rem); line-height:1.06; }
+.display-s { font-size:clamp(1.3rem, 2vw, 1.65rem); line-height:1.18; letter-spacing:-.015em; }
+
+.eyebrow{
+  font-family:'Golos Text', system-ui, sans-serif;
+  font-size:11px; font-weight:500;
+  letter-spacing:.26em; text-transform:uppercase;
+  color:var(--deep);
+}
+.eyebrow--light{ color:rgba(242,237,228,.62); }
+
+.lead{ font-size:clamp(1rem,1.35vw,1.2rem); line-height:1.62; color:#2b2a2c; }
+.body-text{ font-size:clamp(.95rem,1.05vw,1.0625rem); line-height:1.66; color:#2b2a2c; }
+.caption{ font-size:12.5px; line-height:1.45; letter-spacing:.01em; color:var(--deep); }
+.meta{ font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--deep); }
+
+/* Рукописный слой — только для пометок на полях */
+.hand{
+  font-family:'Caveat', cursive;
+  font-weight:400;
+  color:var(--deep);
+  line-height:1.15;
+  letter-spacing:.01em;
+}
+.hand--ink{ color:var(--ink); }
+.hand--accent{ color:var(--accent); }
+.note{ font-family:'Caveat',cursive; font-size:clamp(1.05rem,1.5vw,1.4rem); color:var(--deep); }
+
+.pen-underline{ position:relative; }
+.pen-underline::after{
+  content:''; position:absolute; left:0; right:0; bottom:-.18em; height:1px;
+  background:currentColor; opacity:.35;
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .6s var(--ease), opacity .4s ease;
+}
+.pen-underline:hover::after, .pen-underline:focus-visible::after{ transform:scaleX(1); opacity:.9; }
+
+/* ─────────────────────────── ССЫЛКИ / ФОКУС ─────────────────────────── */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+  outline:1px solid var(--ink); outline-offset:4px;
+}
+.dark a:focus-visible, .dark button:focus-visible, .dark [tabindex]:focus-visible{
+  outline-color:var(--cream);
+}
+.skip{
+  position:fixed; left:16px; top:-100px; z-index:120;
+  background:var(--ink); color:var(--cream); padding:12px 18px;
+  font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+  transition:top .3s ease;
+}
+.skip:focus{ top:16px; }
+
+/* ─────────────────────────── ПОЛОСА ПРОКРУТКИ ─────────────────────────── */
+.progress{
+  position:fixed; top:0; left:0; height:1px; width:0;
+  background:var(--accent); z-index:110; opacity:0;
+  transition:opacity .4s ease;
+}
+.progress.is-on{ opacity:1; }
+
+/* ─────────────────────────── НАВИГАЦИЯ ─────────────────────────── */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  transition:background-color .5s ease, border-color .5s ease, padding .5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.is-scrolled{
+  background:rgba(242,237,228,.9);
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);
+  backdrop-filter:blur(14px) saturate(1.1);
+  border-bottom-color:rgba(25,25,28,.14);
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  height:76px;
+}
+.nav.is-scrolled .nav-inner{ height:64px; }
+.brand svg{ transition:transform .5s var(--ease); }
+.brand:hover svg{ transform:translateY(-1px); }
+.nav-link{
+  position:relative; font-size:11px; font-weight:500;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--ink);
+  padding-block:6px; white-space:nowrap;
+}
+@media (max-width:1199px){
+  .nav-link{ font-size:10px; letter-spacing:.16em; }
+}
+.nav-link::after{
+  content:''; position:absolute; left:0; bottom:0; height:1px; width:100%;
+  background:var(--ink); transform:scaleX(0); transform-origin:left;
+  transition:transform .5s var(--ease);
+}
+.nav-link:hover::after, .nav-link:focus-visible::after, .nav-link.is-current::after{ transform:scaleX(1); }
+.nav-link.is-current{ color:var(--ink); }
+
+.burger{ display:flex; align-items:center; gap:10px; }
+.burger-lines{ display:block; width:26px; height:9px; position:relative; }
+.burger-lines i{
+  position:absolute; left:0; width:100%; height:1px; background:var(--ink); display:block;
+  transition:transform .45s var(--ease), opacity .3s ease;
+}
+.burger-lines i:first-child{ top:0; }
+.burger-lines i:last-child{ bottom:0; }
+body.menu-open .burger-lines i:first-child{ transform:translateY(4px) rotate(6deg); }
+body.menu-open .burger-lines i:last-child{ transform:translateY(-4px) rotate(-6deg); }
+
+.menu{
+  position:fixed; inset:0; z-index:99; background:var(--cream);
+  padding:calc(76px + 8vh) var(--pad) var(--pad);
+  display:flex; flex-direction:column; justify-content:space-between;
+  opacity:0; visibility:hidden; transform:translateY(-8px);
+  transition:opacity .5s ease, transform .6s var(--ease), visibility .5s;
+}
+body.menu-open .menu{ opacity:1; visibility:visible; transform:none; }
+.menu a.menu-item{
+  font-family:'Commissioner',sans-serif; font-weight:500;
+  font-size:clamp(2rem,9vw,3.2rem); letter-spacing:-.03em; line-height:1.18;
+  border-top:1px solid rgba(25,25,28,.18); padding-block:.5em;
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+}
+.menu a.menu-item span{ font-size:11px; letter-spacing:.24em; color:var(--deep); font-family:'Golos Text',sans-serif; }
+
+/* ─────────────────────────── HERO ─────────────────────────── */
+.hero{
+  position:relative; min-height:100svh;
+  display:grid; grid-template-rows:auto 1fr auto;
+  padding-top:120px; padding-bottom:34px;
+  overflow:hidden; isolation:isolate;
+}
+.hero-plan{
+  position:absolute; z-index:-1; pointer-events:none;
+  right:-6%; top:6%; width:min(1080px, 78%);
+  opacity:.13; filter:grayscale(1) contrast(1.08);
+  -webkit-mask-image:radial-gradient(ellipse at 55% 45%, #000 30%, rgba(0,0,0,.55) 58%, transparent 82%);
+  mask-image:radial-gradient(ellipse at 55% 45%, #000 30%, rgba(0,0,0,.55) 58%, transparent 82%);
+}
+.hero-grid{
+  position:absolute; inset:0; z-index:-2; pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(25,25,28,.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(25,25,28,.04) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%, 100% 96px;
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.2) 60%, transparent);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.2) 60%, transparent);
+}
+.hero-mark{ position:absolute; width:18px; height:18px; opacity:.55; }
+.hero-mark::before,.hero-mark::after{ content:''; position:absolute; background:var(--ink); }
+.hero-mark::before{ width:18px; height:1px; }
+.hero-mark::after{ width:1px; height:18px; }
+.hero-mark.tl{ left:var(--pad); top:104px; }
+.hero-mark.tr{ right:var(--pad); top:104px; }
+.hero-mark.tl::after,.hero-mark.tr::after{ top:0; }
+.hero-mark.tl::before,.hero-mark.tr::before{ top:0; }
+.hero-mark.tr::before{ right:0; } .hero-mark.tr::after{ right:0; }
+.hero-mark.bl{ left:var(--pad); bottom:30px; }
+.hero-mark.br{ right:var(--pad); bottom:30px; }
+.hero-mark.bl::before,.hero-mark.br::before{ bottom:0; }
+.hero-mark.bl::after,.hero-mark.br::after{ bottom:0; }
+.hero-mark.br::before{ right:0; } .hero-mark.br::after{ right:0; }
+
+.hero-ruler{
+  position:absolute; right:calc(var(--pad) + 26px); top:50%; transform:translateY(-50%);
+  height:min(46vh, 380px); width:12px; z-index:-1; opacity:.4;
+  background-image:repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 9px);
+  background-size:6px 100%; background-repeat:no-repeat; background-position:right top;
+  border-right:1px solid rgba(25,25,28,.4);
+}
+.hero-ruler::before{
+  content:''; position:absolute; inset:0;
+  background-image:repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 45px);
+  background-size:12px 100%; background-repeat:no-repeat; background-position:right top;
+}
+
+.logo-stage{ display:grid; place-items:center; padding-block:clamp(1rem,4vh,3rem); }
+.logo-wrap{ position:relative; width:min(640px, 74vw); margin-inline:auto; }
+.logo-sig{ width:100%; height:auto; color:var(--ink); overflow:visible; display:block; }
+.logo-sig path{ fill:currentColor; }
+
+.hero-tag{
+  position:absolute; right:0; top:66%; margin:0; white-space:nowrap;
+  font-size:10.5px; letter-spacing:.46em; text-transform:uppercase; color:var(--ink);
+}
+@media (max-width:767px){
+  .hero-tag{ position:static; display:block; text-align:center; margin-top:.85rem; letter-spacing:.38em; }
+}
+.scroll-cue{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+.scroll-cue .line{ position:relative; width:1px; height:64px; background:rgba(25,25,28,.22); overflow:hidden; }
+.scroll-cue .line::after{
+  content:''; position:absolute; inset:0 0 auto 0; height:36%;
+  background:var(--ink); animation:cue 2.6s var(--ease-out) infinite;
+}
+@keyframes cue{
+  0%{ transform:translateY(-100%); }
+  55%{ transform:translateY(280%); }
+  100%{ transform:translateY(280%); }
+}
+
+/* ─────────────────────────── ПОЯВЛЕНИЕ ───────────────────────────
+   Прячем элементы только если JS жив (html.js-reveal ставит скрипт).
+   Триггер — проверка по скроллу, а не IntersectionObserver: у обрезанного
+   clip-path элемента наблюдатель не видит пересечения и раскрытие зависает. */
+.reveal, .reveal-img, .reveal-line{
+  transition:opacity 1.1s var(--ease), transform 1.1s var(--ease), clip-path 1.5s var(--ease);
+  transition-delay:var(--d, 0ms);
+}
+html.js-reveal .reveal{ opacity:0; transform:translateY(26px); }
+html.js-reveal .reveal-img{ clip-path:inset(0 0 102% 0); }
+html.js-reveal .reveal-line{ transform:scaleX(0); transform-origin:left; }
+
+html.js-reveal .reveal.is-in{ opacity:1; transform:none; }
+html.js-reveal .reveal-img.is-in{ clip-path:inset(0 0 0 0); }
+html.js-reveal .reveal-line.is-in{ transform:scaleX(1); }
+
+.no-js .reveal, .no-js .reveal-img, .no-js .reveal-line{ opacity:1; transform:none; clip-path:none; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal,.reveal-img,.reveal-line{ opacity:1!important; transform:none!important; clip-path:none!important; transition:none!important; }
+  .logo-sig.is-drawing path{ animation:none!important; stroke:none!important; fill-opacity:1!important; }
+  .scroll-cue .line::after{ animation:none; }
+}
+</style>
+
+<!-- стили секций: портфолио, процесс, обо мне, контакт -->
+<style>
+/* ═══════════════════════════ ПОРТФОЛИО ═══════════════════════════ */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  column-gap:clamp(16px,2vw,34px);
+  row-gap:clamp(30px,4vw,58px);
+  align-items:start;
+}
+.card{ min-width:0; grid-column:1 / -1; }
+.card.is-hidden{ display:none; }
+.card-btn{ display:block; width:100%; text-align:left; }
+
+.card-media{
+  position:relative; display:block; overflow:hidden;
+  background:#E7E0D4;
+}
+.card-media img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.4s var(--ease), filter .9s ease;
+}
+.card-btn:hover .card-media img,
+.card-btn:focus-visible .card-media img{ transform:scale(1.045); }
+
+.card-hover{
+  position:absolute; right:10px; bottom:10px;
+  background:var(--cream); padding:3px 12px 5px;
+  opacity:0; transform:translateY(8px);
+  transition:opacity .45s ease, transform .7s var(--ease);
+}
+.card-hover .hand{ font-size:1.05rem; color:var(--ink); }
+.card-btn:hover .card-hover,
+.card-btn:focus-visible .card-hover{ opacity:1; transform:none; }
+
+.card-caption{
+  display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+  margin-top:13px; padding-top:9px;
+  border-top:1px solid rgba(25,25,28,.16);
+  transition:border-color .5s ease;
+}
+.card-title{ font-size:12.8px; line-height:1.42; color:var(--ink); }
+.card-num{
+  font-family:'Caveat',cursive; font-size:1rem; line-height:1;
+  color:var(--deep); white-space:nowrap;
+}
+.card-btn:hover .card-caption{ border-color:rgba(162,49,0,.85); }
+
+/* карточка-заметка для разделов без фото */
+.card-empty{
+  display:flex; flex-direction:column; justify-content:space-between; gap:1.4rem;
+  height:100%; padding:clamp(20px,2.4vw,32px);
+  background:var(--paper);
+  border:1px solid rgba(25,25,28,.22);
+  transition:background-color .5s ease, border-color .5s ease;
+}
+.card-empty:hover{ background:#fff; border-color:rgba(25,25,28,.45); }
+.card-empty .hand{ font-size:clamp(1.5rem,2.4vw,2rem); line-height:1; color:var(--ink); }
+.card-empty .caption{ max-width:32ch; }
+.card-empty .card-link{
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:8px; color:var(--ink);
+  align-self:flex-start;
+}
+
+/* фильтр */
+.filter-btn{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+  width:100%; padding:.78rem 0;
+  border-top:1px solid rgba(25,25,28,.14);
+  text-align:left; font-size:14px; line-height:1.3; color:var(--deep);
+  transition:color .35s ease, padding-left .45s var(--ease);
+}
+
+.filter-btn:hover{ color:var(--ink); padding-left:6px; }
+.filter-btn.is-active{ color:var(--ink); font-weight:500; }
+.filter-btn .count{
+  font-family:'Caveat',cursive; font-size:1.05rem; line-height:1;
+  color:var(--deep); transition:color .35s ease;
+}
+.filter-btn.is-active .count{ color:var(--accent); }
+
+/* ═══════════════════════════ ПРОЦЕСС ═══════════════════════════ */
+.section-plan{
+  position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+  opacity:.07;
+  -webkit-mask-image:radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%);
+  mask-image:radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%);
+}
+.section-plan img{ width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06); }
+.section-plan--dark{ opacity:.16; }
+.section-plan--dark img{ filter:grayscale(1) invert(1) contrast(1.15); }
+
+.process-nav{ position:sticky; top:100px; }
+.stage-link{ display:flex; gap:14px; align-items:flex-start; padding:.55rem 0; }
+.stage-link .num{
+  font-family:'Commissioner',sans-serif; font-size:11.5px; letter-spacing:.06em;
+  color:var(--deep); padding-top:2px; transition:color .45s ease;
+}
+.stage-link .name{
+  font-size:12.5px; line-height:1.36; color:var(--deep);
+  transition:color .45s ease, transform .5s var(--ease);
+}
+.stage-link:hover .name{ color:var(--ink); }
+.stage-link.is-active .num{ color:var(--accent); }
+.stage-link.is-active .name{ color:var(--ink); font-weight:500; }
+.stage-link.is-active .name{ transform:translateX(2px); }
+
+.process-rail{
+  position:relative; width:84px; height:1px;
+  background:rgba(25,25,28,.18);
+}
+.process-bar{
+  position:absolute; left:0; top:0; height:1px; width:0;
+  background:var(--ink);
+  transition:width .6s var(--ease);
+}
+
+.stage-stack{ display:flex; flex-direction:column; gap:clamp(4rem,9vw,8.5rem); }
+.stage-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+  border-top:1px solid var(--ink); padding-top:12px;
+}
+.plan-frame{
+  position:relative; overflow:hidden;
+  border:1px solid rgba(25,25,28,.18);
+  background:var(--paper);
+}
+.plan-frame img{ width:100%; height:auto; filter:grayscale(.12) contrast(1.02); }
+.plan-note{
+  position:absolute; right:2px; bottom:-16px;
+  background:var(--white); padding:5px 12px 7px;
+  font-size:1.28rem; line-height:1.05; text-align:left;
+  transform:rotate(-2deg);
+  box-shadow:0 1px 0 rgba(25,25,28,.12);
+}
+
+.stage-list li,
+.num-list li{
+  display:flex; gap:16px;
+  padding:11px 0;
+  border-top:1px solid rgba(25,25,28,.14);
+}
+.stage-list li:last-child,
+.num-list li:last-child{ border-bottom:1px solid rgba(25,25,28,.14); }
+.stage-list .idx,
+.num-list .idx{
+  font-family:'Commissioner',sans-serif; font-size:10.5px; letter-spacing:.14em;
+  color:var(--deep); min-width:22px; padding-top:4px; flex:0 0 auto;
+}
+.stage-list li > span:last-child{ font-size:13px; line-height:1.5; }
+.num-list .idx{ color:var(--accent); }
+.num-list li > span:last-child{ font-size:13.5px; line-height:1.5; }
+
+/* ═══════════════════════════ ОБО МНЕ ═══════════════════════════ */
+.house-frame{
+  position:relative;
+  overflow:hidden;
+  background:var(--paper);
+  border:1px solid rgba(25,25,28,.2);
+  padding:clamp(26px,3.2vw,48px) clamp(22px,3.4vw,54px) clamp(16px,2vw,26px);
+}
+.house-frame .hero-mark{ width:12px; height:12px; opacity:.4; }
+.house-frame .hero-mark::before{ width:12px; }
+.house-frame .hero-mark::after{ height:12px; }
+.house-frame .hero-mark.tl{ left:10px; top:10px; }
+.house-frame .hero-mark.tr{ right:10px; top:10px; }
+.house-frame .hero-mark.bl{ left:10px; bottom:10px; }
+.house-frame .hero-mark.br{ right:10px; bottom:10px; }
+.house{ width:100%; height:auto; color:var(--ink); overflow:visible; }
+.hs-l{ will-change:transform; }
+.hs-sun{ animation:pulse 7s ease-in-out infinite; }
+@keyframes cardIn{
+  from{ opacity:0; transform:translateY(20px); }
+  to{ opacity:1; transform:none; }
+}
+@keyframes pulse{
+  0%,100%{ transform:scale(1); opacity:1; }
+  50%{ transform:scale(1.055); opacity:.72; }
+}
+.house-note{
+  position:absolute; right:clamp(10px,3vw,36px); top:clamp(12px,3vw,34px);
+  text-align:right; font-size:1.1rem; line-height:1.1;
+  transform:rotate(2deg);
+}
+
+/* ═══════════════════════════ КОНТАКТ ═══════════════════════════ */
+.contact-row{
+  display:flex; flex-direction:column; gap:7px;
+  padding:18px 0;
+  border-top:1px solid rgba(242,237,228,.2);
+  transition:padding-left .5s var(--ease), border-color .4s ease;
+}
+.contact-row:last-of-type{ border-bottom:1px solid rgba(242,237,228,.2); }
+.contact-row:hover{ padding-left:8px; border-color:rgba(242,237,228,.55); }
+.contact-value{
+  font-family:'Commissioner',sans-serif; font-weight:500;
+  font-size:clamp(1.3rem,2.5vw,2rem); letter-spacing:-.022em;
+  color:var(--cream); line-height:1.1;
+  transition:color .4s ease;
+}
+.contact-row:hover .contact-value{ color:#fff; }
+
+.social{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px 12px;
+}
+@media (min-width:768px){ .social{ grid-template-columns:repeat(6,minmax(0,1fr)); } }
+.social a{ display:flex; flex-direction:column; align-items:center; gap:9px; }
+.social-box{
+  display:grid; place-items:center;
+  width:100%; aspect-ratio:1;
+  border:1px solid rgba(242,237,228,.26);
+  color:var(--cream);
+  transition:background-color .4s ease, color .4s ease,
+             transform .55s var(--ease), border-color .4s ease;
+}
+.social a:hover .social-box,
+.social a:focus-visible .social-box{
+  background:var(--cream); color:var(--ink);
+  border-color:var(--cream); transform:translateY(-3px);
+}
+.social-name{
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(242,237,228,.6); transition:color .4s ease;
+}
+.social a:hover .social-name{ color:var(--cream); }
+.social-max{
+  font-family:'Commissioner',sans-serif; font-weight:600;
+  font-size:clamp(10px,1.1vw,12px); letter-spacing:.06em;
+}
+.social-arrow{ display:none; }
+
+.cta{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:18px 0 20px;
+  border-top:1px solid rgba(242,237,228,.6);
+  border-bottom:1px solid rgba(242,237,228,.6);
+  font-family:'Commissioner',sans-serif; font-weight:500;
+  font-size:clamp(1.05rem,1.8vw,1.4rem); letter-spacing:-.015em;
+  color:var(--cream);
+  transition:padding-left .5s var(--ease), border-color .4s ease;
+}
+.cta:hover{ padding-left:10px; border-color:var(--cream); }
+.cta svg{ flex:0 0 auto; transition:transform .55s var(--ease); }
+.cta:hover svg{ transform:translateX(6px); }
+
+/* ═══════════════════════════ ФУТЕР ═══════════════════════════ */
+.foot-link{
+  font-size:12.5px; line-height:1.5; width:fit-content;
+  color:rgba(242,237,228,.72);
+  transition:color .35s ease;
+}
+.foot-link:hover{ color:var(--cream); }
+.autograph{ color:var(--cream); opacity:.9; }
+
+/* ═══════════════════════════ ПРОСМОТР ═══════════════════════════ */
+.lb{
+  position:fixed; inset:0; z-index:130;
+  background:rgba(18,18,20,.965);
+  display:grid; place-items:center;
+  padding:clamp(16px,4vw,56px);
+  opacity:0; visibility:hidden;
+  transition:opacity .45s ease, visibility .45s;
+}
+.lb.is-open{ opacity:1; visibility:visible; }
+.lb-figure{
+  max-width:min(1080px,94vw); max-height:90vh;
+  display:flex; flex-direction:column; gap:16px;
+}
+.lb-figure img{
+  max-height:76vh; width:auto; max-width:100%;
+  object-fit:contain; margin-inline:auto;
+}
+.lb-cap{ display:flex; align-items:baseline; justify-content:space-between; gap:2rem; }
+.lb-cap .hand{ font-size:1.3rem; color:rgba(242,237,228,.92); }
+.lb-cap .meta{ color:rgba(242,237,228,.5); }
+.lb-close{
+  position:absolute; top:20px; right:clamp(18px,4vw,48px);
+  font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(242,237,228,.8);
+}
+.lb-close:hover{ color:#fff; }
+.lb-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  color:rgba(242,237,228,.55); font-size:24px; padding:16px;
+}
+.lb-nav:hover{ color:#fff; }
+.lb-prev{ left:clamp(4px,2vw,24px); }
+.lb-next{ right:clamp(4px,2vw,24px); }
+
+/* ═══════════════════════════ МЕЛОЧИ ═══════════════════════════ */
+html{ scroll-padding-top:84px; }
+section[id], article[id], footer[id]{ scroll-margin-top:84px; }
+.stage{ scroll-margin-top:104px; }
+body.menu-open{ overflow:hidden; }
+.display-contact{ font-size:clamp(2.6rem, 7vw, 7rem); }
+
+@media (max-width:767px){
+  .hero{ padding-top:104px; }
+  .process-nav{ position:static; }
+  .plan-note{ right:4px; bottom:-14px; font-size:1rem; }
+  .lb-nav{ display:none; }
+}
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:var(--cream); }
+::-webkit-scrollbar-thumb{ background:#CFC6B8; }
+::-webkit-scrollbar-thumb:hover{ background:#B6AC9D; }
+
+@media (prefers-reduced-motion: reduce){
+  .hs-l,.hs-sun{ animation:none!important; transition:none!important; transform:none!important; }
+  .card-btn:hover .card-media img{ transform:none; }
+  .scroll-cue .line::after{ animation:none; }
+  .progress{ transition:none; }
+}
+
+
+/* ═══════════════════════════ ПЛОТНЫЕ СЕКЦИИ ═══════════════════════════ */
+.section--tight{ padding-block:clamp(2.4rem, 4.5vw, 4rem) clamp(4.5rem, 9vw, 9rem); }
+
+/* ═══════════════════════════ ТАЙМЛАЙН ПРОЦЕССА ═══════════════════════════ */
+.tl-section{ position:relative; }
+.tl-head{ padding-block:clamp(4.5rem, 9vw, 8rem) clamp(2.4rem, 5vw, 4rem); }
+.tl-head-row{ display:grid; grid-template-columns:1fr; gap:clamp(1.2rem, 3vw, 2.4rem); align-items:end; }
+@media (min-width:1200px){
+  .tl-head-row{
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    column-gap:2rem; row-gap:0;
+    align-items:start;
+  }
+  .tl-head-row > .display{ grid-column:1 / span 7; }
+  .tl-head-side{
+    grid-column:9 / span 4; text-align:right;
+    /* подъём на полстрочки: первая строка абзаца встаёт ровно по верху заголовка */
+    padding-top:.36rem;
+  }
+  .tl-head-side .tl-hint{ justify-content:flex-end; }
+}
+.tl-head-side{ max-width:44ch; }
+.tl-hint{
+  margin-top:1.6rem; display:flex; align-items:center; gap:.9rem;
+  font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--deep);
+}
+.tl-hint-line{ position:relative; display:inline-block; width:64px; height:1px; background:var(--ink); flex:0 0 auto; }
+.tl-hint-line::after{
+  content:''; position:absolute; right:0; top:-2px; width:5px; height:5px;
+  border-top:1px solid var(--ink); border-right:1px solid var(--ink); transform:rotate(45deg);
+}
+
+.tl-wrap{ position:relative; }
+.tl-track{
+  display:flex; flex-direction:column; gap:clamp(3rem, 7vw, 5rem);
+  padding-inline:var(--pad);
+}
+.tl-card{ min-width:0; }
+
+.tl-card-head{ border-top:1px solid var(--ink); }
+.tl-title-row{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:1.6rem;
+  margin-top:clamp(1rem, 1.7vw, 1.7rem);
+}
+.tl-title-row .tl-title{ margin-top:0; }
+.tl-step{
+  flex:0 0 auto; white-space:nowrap; padding-top:.55em;
+  font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--deep);
+}
+.tl-num{
+  font-family:'Commissioner',sans-serif; font-weight:500;
+  font-size:clamp(1.05rem, 1.7vw, 1.5rem); letter-spacing:-.02em; color:var(--ink);
+}
+.tl-title{ margin-top:clamp(1rem, 1.6vw, 1.6rem); max-width:22ch; }
+.tl-body{ margin-top:clamp(1.4rem, 2.4vw, 2.4rem); display:grid; gap:clamp(1.4rem, 2.6vw, 2.2rem); }
+@media (min-width:768px){
+  .tl-body{ grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr); align-items:start; }
+  .tl-body > .tl-text{ padding-right:.5rem; }
+}
+.tl-text .body-text + .body-text{ margin-top:.85rem; }
+.tl-figure{ position:relative; }
+.num-list--cols{ display:grid; row-gap:0; }
+@media (min-width:768px){
+  .num-list--cols{ grid-template-columns:1fr 1fr; column-gap:clamp(1.2rem, 2.4vw, 2.2rem); }
+}
+
+.tl-end{ align-self:center; padding:0 0 2rem; }
+@media (min-width:1024px){ .tl-end{ padding:0 clamp(2rem, 8vw, 9rem) 0 0; } }
+
+.tl-foot{ display:none; }
+
+@media (min-width:1024px){
+  .tl-pin{
+    position:sticky; top:0; height:100vh; overflow:hidden;
+    display:grid; align-items:center;
+  }
+  .tl-track{
+    flex-direction:row; align-items:flex-start;
+    gap:clamp(2rem, 5vw, 5.5rem);
+    will-change:transform;
+  }
+  .tl-card{ flex:0 0 clamp(520px, 60vw, 900px); }
+  .tl-card--wide{ flex:0 0 clamp(600px, 76vw, 1140px); }
+  .tl-end{ flex:0 0 auto; }
+
+  .tl-foot{
+    display:block; position:absolute; left:var(--pad); right:var(--pad);
+    bottom:clamp(1.4rem, 3.6vh, 2.8rem);
+  }
+  .tl-rail{ position:relative; height:1px; background:rgba(25,25,28,.18); }
+  .tl-bar{ position:absolute; left:0; top:0; height:1px; width:0; background:var(--ink); }
+  .tl-dots{ display:flex; justify-content:space-between; margin-top:-9px; }
+  .tl-dot{
+    font-family:'Caveat',cursive; font-size:1rem; line-height:1;
+    color:var(--deep); background:#fff; padding-inline:10px;
+  }
+}
+
+/* подпись скрыта, пока не начнётся анимация рисования */
+.pre-logo .logo-sig{ opacity:0; }
+/* у пера — только обводка, без заливки (иначе на замкнутых контурах будут кляксы) */
+.logo-sig .pen{ fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+/* компактнее внутри таймлайна, чтобы карточка влезала в экран */
+@media (min-width:1024px){
+  .tl-card .body-text{ font-size:clamp(.88rem, .95vw, 1rem); line-height:1.6; }
+  .tl-card .stage-list li,
+  .tl-card .num-list li{ padding:9px 0; }
+  .tl-card .plan-frame img{ max-height:46vh; object-fit:contain; background:#fff; }
+}
+@media (min-width:1024px) and (max-height:820px){
+  .tl-title{ font-size:clamp(1.4rem, 2.2vw, 2rem); }
+  .tl-card .stage-list li > span:last-child,
+  .tl-card .num-list li > span:last-child{ font-size:12.5px; line-height:1.45; }
+  .tl-card .plan-frame img{ max-height:34vh; }
+  .tl-num{ font-size:1.15rem; }
+}
+
+
+/* ═══════════════════════════ СМОТРЕТЬ БОЛЬШЕ ═══════════════════════════ */
+.more{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  width:100%; margin-top:clamp(2.4rem, 5vw, 4rem);
+  padding:20px 2px 14px;
+  border-top:1px solid rgba(25,25,28,.18);
+  transition:padding-left .55s var(--ease), border-color .4s ease;
+}
+.more:hover{ padding-left:12px; border-color:var(--ink); }
+.more:hover .eyebrow{ color:var(--ink); }
+.more-arrow svg{ transition:transform .5s var(--ease); }
+.more:hover .more-arrow svg{ transform:translateY(6px); }
+.more.is-off{ display:none; }
+
+
+/* заголовки блоков «Портфолио» и «Структура проекта» — один размер */
+.display-projects,
+.display-process{ font-size:clamp(2.8rem, 7.6vw, 8rem); line-height:.95; }
+
+
+
+
+/* подпись в конце карусели */
+.tl-end .hand{
+  font-size:clamp(1.45rem, 2.1vw, 2rem);
+  line-height:1.12;
+}
+@media (max-width:1023px){
+  .tl-end{ padding:clamp(2rem, 6vw, 3rem) 0 clamp(3rem, 8vw, 5rem); }
+}
+
+
+/* портрет в «Обо мне» */
+.about-photo{ margin:0; padding-top:.8rem; }   /* верх фото — по линии заголовка */
+.about-photo img{
+  width:100%; height:auto; display:block;
+  aspect-ratio:4 / 5; object-fit:cover; object-position:50% 42%;
+  background:#E7E0D4;
+}
+
+
+/* этап планировки: план крупнее — колонка шире, высота больше */
+@media (min-width:768px){
+  .tl-card--plan .tl-body{ grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); }
+}
+@media (min-width:1024px){
+  .tl-card--plan{ flex:0 0 clamp(640px, 72vw, 1100px); }
+  .tl-card--plan .plan-frame--wide img{ max-height:62vh; object-fit:contain; }
+  .tl-card--plan .tl-figure{ margin-top:.4rem; }
+}
+
+
+/* ═══════════════════════════ МОБИЛЬНЫЕ ПРАВКИ ═══════════════════════════ */
+
+/* иконки связи в шапке */
+.head-contact{ display:flex; align-items:center; gap:11px; }
+.head-contact a{
+  display:grid; place-items:center; width:36px; height:36px;
+  border:1px solid rgba(25,25,28,.18); color:var(--ink);
+  transition:background-color .35s ease, color .35s ease, border-color .35s ease;
+}
+.head-contact a:hover, .head-contact a:active{ background:var(--ink); color:var(--cream); border-color:var(--ink); }
+.max-mark{ font-family:'Commissioner',sans-serif; font-weight:600; font-size:9px; letter-spacing:.06em; }
+
+/* разделы на первом экране */
+.hero-nav{ width:100%; margin-top:clamp(1.2rem, 3.4vh, 2.4rem); }
+.hero-nav a{
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+  padding-block:.9rem; border-top:1px solid rgba(25,25,28,.16);
+  font-family:'Commissioner',sans-serif; font-weight:500;
+  font-size:clamp(1.1rem, 4.4vw, 1.45rem); letter-spacing:-.01em; line-height:1.1;
+}
+.hero-nav a:last-child{ border-bottom:1px solid rgba(25,25,28,.16); }
+.hero-nav .n{ font-family:'Golos Text',sans-serif; font-size:10px; letter-spacing:.2em; color:var(--deep); }
+
+/* кнопка звонка */
+.call-fab{
+  position:fixed; right:16px; bottom:16px; z-index:105;
+  display:grid; place-items:center; width:54px; height:54px;
+  background:var(--cream); color:var(--ink);
+  border:1px solid rgba(25,25,28,.22);
+  transition:transform .45s var(--ease), background-color .3s ease, color .3s ease;
+}
+.call-fab:hover{ transform:translateY(-3px); background:var(--ink); color:var(--cream); }
+@media (min-width:768px){ .call-fab{ right:26px; bottom:26px; width:58px; height:58px; } }
+
+@media (max-width:767px){
+  /* имя не прилипает к левому кроп-знаку */
+  .hero-meta{ padding-left:1.6rem; }
+
+  /* подсказка «этапы идут вбок» на телефоне не нужна */
+  .tl-hint{ display:none; }
+  .hide-mobile{ display:none; }
+
+  /* текст этапов читается легче */
+  .tl-card .body-text{ font-size:16.5px; line-height:1.66; }
+  .tl-text .body-text + .body-text{ margin-top:1.15rem; }
+  .tl-body{ gap:1.7rem; }
+  .tl-card .plan-frame img{ max-height:none; }
+
+  /* портрет меньше и сразу после заголовка */
+  .about-photo{ width:70%; }
+}
+@media (min-width:768px){
+  .about-photo{ width:auto; }
+}
+
+</style>
+</head>
+<body class="antialiased">
+<script>document.documentElement.classList.remove('no-js');</script>
+
+<a class="skip" href="#projects">Перейти к проектам</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- Единый вектор логотипа Bragn.: подпись + «interior.» (брендбук, стр. 05) -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="logo-bragn" viewBox="0 0 902 430" fill="currentColor"><g transform="translate(-2.25,-2.45) scale(1.13293)"><path d="M244.496 177.029C244.496 180.065 238.247 184.113 225.749 189.173C215.468 193.221 205.187 197.167 194.907 201.013C193.496 201.62 181.703 206.984 159.529 217.103C144.813 223.985 135.036 227.426 130.198 227.426C128.182 227.426 126.67 226.211 125.662 223.782C124.654 220.949 127.88 217.812 135.338 214.371C145.014 210.323 151.062 206.68 153.481 203.442C161.141 193.524 165.374 187.756 166.181 186.137C170.011 179.458 171.926 171.564 171.926 162.456C171.926 160.837 170.616 158.915 167.995 156.688C165.375 154.259 164.064 152.033 164.064 150.009C164.064 146.366 166.987 141.913 172.833 136.651C178.881 131.186 184.928 125.823 190.976 120.561C196.419 115.501 201.156 109.935 205.187 103.863C209.421 97.5886 211.537 92.8323 211.537 89.594C211.537 87.1652 211.336 85.5461 210.933 84.7365C210.529 83.9269 209.219 83.5221 207.002 83.5221C204.784 83.5221 195.612 89.594 179.485 101.738C164.165 112.87 149.449 124.406 135.338 136.347C121.429 148.289 106.915 161.849 91.7961 177.029C79.2979 189.375 61.4577 207.085 38.2755 230.158C32.0263 236.635 25.7772 243.111 19.5281 249.588C13.8837 254.85 10.0536 257.077 8.03778 256.267C4.00609 254.041 1.99025 252.017 1.99025 250.195C1.99025 244.123 18.8226 219.127 52.4872 175.207C59.341 166.302 68.2108 153.551 79.0963 136.955C92.8041 116.108 100.767 104.166 102.984 101.131C96.735 104.774 90.5866 109.429 84.5391 115.096C79.9027 119.549 75.2662 124.001 70.6298 128.454C68.4123 130.276 63.4735 135.639 55.8133 144.544C50.3705 150.819 46.4396 153.956 44.0206 153.956C43.4159 153.956 42.8111 153.753 42.2064 153.349C41.6016 152.741 40.5937 152.337 39.1826 152.134C38.5778 151.932 38.2755 151.224 38.2755 150.009C38.2755 143.937 67.1021 113.477 124.755 58.6274C164.266 20.9818 187.65 2.15897 194.907 2.15897C196.519 2.15897 197.93 3.06975 199.14 4.89132C200.349 6.51049 200.954 8.23085 200.954 10.0524C200.954 14.1003 194.503 22.7021 181.602 35.8579C161.04 56.7047 147.937 70.5688 142.293 77.4502C127.174 95.4635 111.35 115.905 94.8199 138.776C79.2979 160.433 69.5211 175.309 65.4894 183.404C79.3987 170.046 102.782 149.098 135.641 120.561C150.76 108.417 165.878 96.273 180.997 84.1293C195.511 73.6047 207.405 68.3424 216.678 68.3424C222.725 68.3424 225.749 74.2119 225.749 85.9508C225.749 92.8323 220.81 102.649 210.933 115.399C201.257 127.948 191.984 136.55 183.114 141.205C186.339 145.86 187.952 151.224 187.952 157.295C187.952 161.95 186.238 168.63 182.812 177.333C179.586 185.833 175.958 192.917 171.926 198.584C177.772 195.953 187.448 191.905 200.954 186.44C227.563 177.333 241.271 172.779 242.077 172.779C243.69 174.195 244.496 175.612 244.496 177.029Z"/><path d="M341.987 204.352C341.987 205.972 337.149 209.109 327.473 213.764C317.998 218.419 308.625 222.467 299.352 225.908C286.854 230.36 278.589 233.093 274.557 234.105C266.695 236.129 257.523 237.141 247.041 237.141C243.815 237.141 239.683 235.724 234.643 232.89C228.596 229.247 225.572 225.098 225.572 220.443C225.572 217.205 229.503 211.234 237.365 202.531C246.234 193.018 250.871 187.857 251.274 187.048C244.823 183.607 241.094 182.089 240.086 182.494C239.078 182.898 235.248 186.643 228.596 193.727C222.145 200.81 218.416 204.352 217.408 204.352C211.763 204.352 208.941 201.013 208.941 194.334C208.941 191.905 214.182 184.416 224.665 171.868C235.349 159.117 242.807 152.741 247.041 152.741C252.887 152.741 256.414 154.664 257.624 158.51C257.825 162.153 258.027 165.897 258.229 169.743C258.632 173.386 260.648 175.207 264.276 175.207C267.703 175.207 272.743 172.981 279.395 168.528C286.047 163.873 291.49 161.546 295.723 161.546C302.779 161.546 306.306 165.189 306.306 172.475C306.306 175.916 302.779 179.255 295.723 182.494C287.66 185.53 279.697 188.667 271.836 191.905C253.491 200.203 244.319 209.716 244.319 220.443C244.319 223.276 246.637 224.693 251.274 224.693C260.345 224.693 276.371 221.05 299.352 213.764C304.391 212.145 311.951 209.109 322.03 204.656C330.295 200.81 335.234 198.888 336.847 198.888C339.064 198.888 340.475 199.191 341.08 199.798C341.685 200.406 341.987 201.924 341.987 204.352Z"/><path d="M511.233 192.209C511.233 195.447 498.835 202.531 474.04 213.46C456.301 221.354 439.166 225.3 422.636 225.3C417.597 225.3 413.666 223.378 410.844 219.532C409.029 216.091 407.215 212.651 405.401 209.21C384.235 223.985 364.479 231.372 346.135 231.372C339.483 231.372 334.242 229.652 330.412 226.211C326.581 222.77 324.666 218.52 324.666 213.46C324.666 202.126 332.125 191.703 347.042 182.19C363.572 171.868 384.235 166.707 409.03 166.707C418.504 166.707 425.66 169.945 430.498 176.422C434.127 173.993 438.158 172.779 442.593 172.779C445.819 172.779 447.431 175.713 447.431 181.583C447.431 183 443.803 186.542 436.546 192.209C429.289 197.673 425.66 202.126 425.66 205.567C425.66 210.829 427.273 213.46 430.498 213.46C444.206 213.46 457.41 210.424 470.11 204.352C491.679 194.03 503.875 188.869 506.697 188.869C509.721 188.869 511.233 189.982 511.233 192.209ZM409.03 184.619C409.433 182.595 407.215 181.583 402.377 181.583C392.701 181.583 380.707 184.72 366.394 190.994C350.066 198.281 341.902 205.769 341.902 213.46C341.902 216.496 343.313 218.217 346.135 218.621C353.392 219.836 364.782 217.002 380.304 210.121C397.438 202.43 407.014 193.929 409.03 184.619Z"/><path d="M584.583 165.492C584.583 170.957 576.016 183.607 558.881 203.442C555.252 207.692 547.794 216.8 536.505 230.765C540.335 233.599 542.25 236.129 542.25 238.355C542.25 239.165 541.948 240.075 541.343 241.087C538.319 246.147 529.853 252.523 515.943 260.214C490.141 291.383 468.369 314.456 450.63 329.433C434.503 342.994 415.554 355.036 393.783 365.561C371.81 376.085 355.28 381.348 344.193 381.348C333.509 381.348 328.167 378.615 328.167 373.151C328.167 364.852 339.557 352 362.336 334.594C381.285 320.022 403.459 305.652 428.859 291.484C455.468 276.709 476.937 265.375 493.265 257.481C502.941 251.005 512.92 240.176 523.2 224.997C512.315 224.997 503.445 223.378 496.591 220.139C487.923 216.091 482.783 210.525 481.17 203.442C478.549 191.5 501.328 177.029 549.507 160.028C557.57 157.194 565.432 155.777 573.093 155.777C580.753 155.777 584.583 159.016 584.583 165.492ZM561.905 175.815C561.905 174.195 560.897 173.386 558.881 173.386C552.027 173.386 541.343 177.029 526.829 184.315C508.283 193.625 499.01 200.001 499.01 203.442C499.01 206.68 501.228 209.008 505.663 210.424C514.935 213.46 523.402 213.46 531.062 210.424C551.624 192.411 561.905 180.874 561.905 175.815ZM483.287 277.822C471.796 281.263 452.747 291.18 426.137 307.574C414.446 314.658 399.831 324.576 382.293 337.326C362.739 351.494 352.962 359.59 352.962 361.614C352.962 364.245 354.172 365.561 356.591 365.561C361.832 365.561 372.012 361.513 387.131 353.417C402.25 345.523 416.461 336.82 429.766 327.308C445.691 315.974 463.531 299.478 483.287 277.822Z"/><path d="M759.999 201.62C759.999 203.239 756.572 205.972 749.718 209.817C743.066 213.663 736.111 216.8 728.854 219.229C704.463 227.527 685.312 231.676 671.403 231.676C666.565 231.676 662.432 230.461 659.005 228.033C655.578 225.402 653.865 221.961 653.865 217.711C653.865 215.484 656.889 210.93 662.936 204.049C668.177 198.584 673.318 193.018 678.357 187.351C665.053 189.375 649.531 194.637 631.791 203.138C604.174 216.294 589.156 222.872 586.737 222.872C582.101 222.872 579.783 220.342 579.783 215.282C579.783 212.448 583.814 207.388 591.878 200.102C600.143 192.816 604.275 187.958 604.275 185.53C604.275 179.863 604.678 175.41 605.485 172.171C606.493 168.933 610.02 167.314 616.068 167.314C619.092 167.314 621.41 168.933 623.022 172.171C624.635 175.207 625.139 178.749 624.534 182.797C623.93 187.048 622.216 191.298 619.394 195.548C627.659 191.905 641.165 186.542 659.912 179.458C679.265 173.183 694.182 170.046 704.664 170.046C708.897 170.046 711.014 172.374 711.014 177.029C711.014 178.851 707.688 181.886 701.036 186.137C692.368 191.601 686.622 195.852 683.8 198.888C674.124 209.21 669.286 215.484 669.286 217.711C669.286 220.342 672.31 221.657 678.357 221.657C687.429 221.657 702.044 218.52 722.202 212.246C727.242 210.627 734.297 207.894 743.368 204.049C751.23 200.608 755.464 198.888 756.068 198.888C758.689 198.888 759.999 199.799 759.999 201.62Z"/></g><g transform="translate(-15.85,0.61) scale(1.13293)"><path d="M808.391 216.496C808.391 219.532 807.383 222.366 805.367 224.997C803.352 227.426 800.933 228.741 798.11 228.944C794.684 229.146 791.66 228.235 789.039 226.211C786.62 223.985 785.411 221.151 785.411 217.711C785.411 214.472 786.721 211.436 789.341 208.603C791.962 205.769 794.885 204.454 798.11 204.656C804.964 205.263 808.391 209.21 808.391 216.496Z"/></g><g transform="translate(681.44,296.55) scale(0.62821)"><path d="M0.519425 53.2238C0.519425 53.144 0.26951 51.788 1.51908 51.788C4.85128 51.788 5.68433 51.3892 5.68433 48.6773V19.9623C5.68433 16.8515 5.76763 15.8146 0.519425 15.8146C0.519425 15.6551 0.43612 14.5384 1.26917 14.3789L10.516 12.305C11.0158 12.2253 11.6823 12.0657 12.3487 12.0657V48.6773C12.3487 51.3892 13.1818 51.788 16.514 51.788C17.7635 51.788 17.5136 53.144 17.5136 53.2238H0.519425ZM8.6 9.19424C6.01755 9.19424 4.01823 7.27991 4.01823 4.80723C4.01823 2.41433 6.01755 0.5 8.6 0.5C11.0991 0.5 13.0985 2.41433 13.0985 4.80723C13.0985 7.27991 11.0991 9.19424 8.6 9.19424Z"/><path d="M30.8574 53.2238C30.8574 53.144 30.6074 51.788 31.857 51.788C35.1892 51.788 36.0223 51.3892 36.0223 48.6773V19.9623C36.0223 16.8515 36.1056 15.8146 30.8574 15.8146C30.8574 15.6551 30.7741 14.5384 31.6071 14.3789L40.8539 12.305C41.3538 12.2253 42.0202 12.0657 42.6866 12.0657V19.1647C45.7689 14.6979 50.434 12.0657 55.6822 12.0657C65.0124 12.0657 71.0103 17.5694 71.0103 24.6684V48.6773C71.0103 51.3892 71.8433 51.788 75.1755 51.788C76.4251 51.788 76.1752 53.144 76.1752 53.2238H59.181C59.181 53.144 58.9311 51.788 60.1807 51.788C63.5129 51.788 64.3459 51.3892 64.3459 48.6773V23.6315C64.3459 17.8885 60.5139 13.9003 55.0991 13.9003C50.3507 13.9003 45.4357 16.7718 42.6866 21.8767V48.6773C42.6866 51.3892 43.5197 51.788 46.8519 51.788C48.1015 51.788 47.8516 53.144 47.8516 53.2238H30.8574Z"/><path d="M111.675 50.5118C109.509 52.9845 107.176 54.5 104.177 54.5C97.0131 54.5 93.0978 50.5118 93.0978 42.3759V14.7777H88.6826V13.342C94.514 13.342 98.2627 9.91211 98.2627 4.96676H99.7622V13.342H110.342V14.7777H99.7622V42.3759C99.7622 49.0761 101.762 52.3464 105.843 52.3464C107.593 52.3464 109.092 51.3095 110.425 49.7142L111.675 50.5118Z"/><path d="M190.777 12.0657C193.776 12.0657 198.357 12.7038 202.606 16.373C201.606 18.048 199.774 19.8028 197.108 19.8028C191.526 19.8028 193.026 14.5384 188.527 14.5384C185.362 14.5384 181.03 16.7718 178.364 21.8767V48.6773C178.364 51.3892 179.197 51.788 182.529 51.788C183.779 51.788 183.529 53.144 183.529 53.2238H166.535C166.535 53.144 166.285 51.788 167.535 51.788C170.867 51.788 171.7 51.3892 171.7 48.6773V30.0923C167.618 37.9889 159.204 54.5 143.376 54.5C130.297 54.5 121.217 45.0081 121.217 33.2031C121.217 21.5576 131.13 12.0657 143.376 12.0657C154.039 12.0657 160.454 19.3242 162.286 28.9756L129.298 36.2341C131.63 45.0879 138.378 51.5487 147.042 51.5487C159.871 51.5487 169.117 32.0864 171.7 26.9815V19.9623C171.7 16.8515 171.783 15.8146 166.535 15.8146C166.535 15.6551 166.452 14.5384 167.285 14.3789L176.532 12.305C177.031 12.2253 177.698 12.0657 178.364 12.0657V19.0849C181.363 14.6979 185.528 12.0657 190.777 12.0657ZM128.381 29.2947C128.381 31.209 128.548 33.1233 128.964 34.8781L154.289 29.2947C152.373 20.8397 147.292 14.2991 139.794 14.2991C132.213 14.2991 128.381 19.3242 128.381 29.2947Z"/><path d="M211.847 53.2238C211.847 53.144 211.597 51.788 212.847 51.788C216.179 51.788 217.012 51.3892 217.012 48.6773V19.9623C217.012 16.8515 217.095 15.8146 211.847 15.8146C211.847 15.6551 211.764 14.5384 212.597 14.3789L221.844 12.305C222.343 12.2253 223.01 12.0657 223.676 12.0657V48.6773C223.676 51.3892 224.509 51.788 227.841 51.788C229.091 51.788 228.841 53.144 228.841 53.2238H211.847ZM219.927 9.19424C217.345 9.19424 215.346 7.27991 215.346 4.80723C215.346 2.41433 217.345 0.5 219.927 0.5C222.427 0.5 224.426 2.41433 224.426 4.80723C224.426 7.27991 222.427 9.19424 219.927 9.19424Z"/><path d="M263.927 54.5C251.682 54.5 241.768 45.0081 241.768 33.2031C241.768 21.5576 251.682 12.0657 263.927 12.0657C276.09 12.0657 286.003 21.5576 286.003 33.2031C286.003 45.0081 276.09 54.5 263.927 54.5ZM267.593 52.2666C274.674 52.2666 278.839 47.4808 278.839 37.9092C278.839 25.7053 270.259 14.2991 260.345 14.2991C252.765 14.2991 248.933 19.3242 248.933 29.2947C248.933 41.5783 257.68 52.2666 267.593 52.2666Z"/><path d="M322.309 12.0657C325.308 12.0657 329.89 12.7038 334.138 16.373C333.139 18.048 331.306 19.8028 328.64 19.8028C323.059 19.8028 324.558 14.5384 320.06 14.5384C316.894 14.5384 312.562 16.7718 309.897 21.8767V48.6773C309.897 51.3892 310.73 51.788 314.062 51.788C315.312 51.788 315.062 53.144 315.062 53.2238H298.067C298.067 53.144 297.818 51.788 299.067 51.788C302.399 51.788 303.232 51.3892 303.232 48.6773V19.9623C303.232 16.8515 303.316 15.8146 298.067 15.8146C298.067 15.6551 297.984 14.5384 298.817 14.3789L308.064 12.305C308.564 12.2253 309.23 12.0657 309.897 12.0657V19.0849C312.896 14.6979 317.061 12.0657 322.309 12.0657Z"/><path d="M348.25 53.2238C346.501 53.2238 345.001 51.788 345.001 50.113C345.001 48.5177 346.501 47.082 348.25 47.082C350 47.082 351.499 48.5177 351.499 50.113C351.499 51.788 350 53.2238 348.25 53.2238Z"/></g></symbol>
+  <symbol id="logo-sig" viewBox="0 0 902 430" fill="currentColor"><g transform="translate(-2.25,-2.45) scale(1.13293)"><path d="M244.496 177.029C244.496 180.065 238.247 184.113 225.749 189.173C215.468 193.221 205.187 197.167 194.907 201.013C193.496 201.62 181.703 206.984 159.529 217.103C144.813 223.985 135.036 227.426 130.198 227.426C128.182 227.426 126.67 226.211 125.662 223.782C124.654 220.949 127.88 217.812 135.338 214.371C145.014 210.323 151.062 206.68 153.481 203.442C161.141 193.524 165.374 187.756 166.181 186.137C170.011 179.458 171.926 171.564 171.926 162.456C171.926 160.837 170.616 158.915 167.995 156.688C165.375 154.259 164.064 152.033 164.064 150.009C164.064 146.366 166.987 141.913 172.833 136.651C178.881 131.186 184.928 125.823 190.976 120.561C196.419 115.501 201.156 109.935 205.187 103.863C209.421 97.5886 211.537 92.8323 211.537 89.594C211.537 87.1652 211.336 85.5461 210.933 84.7365C210.529 83.9269 209.219 83.5221 207.002 83.5221C204.784 83.5221 195.612 89.594 179.485 101.738C164.165 112.87 149.449 124.406 135.338 136.347C121.429 148.289 106.915 161.849 91.7961 177.029C79.2979 189.375 61.4577 207.085 38.2755 230.158C32.0263 236.635 25.7772 243.111 19.5281 249.588C13.8837 254.85 10.0536 257.077 8.03778 256.267C4.00609 254.041 1.99025 252.017 1.99025 250.195C1.99025 244.123 18.8226 219.127 52.4872 175.207C59.341 166.302 68.2108 153.551 79.0963 136.955C92.8041 116.108 100.767 104.166 102.984 101.131C96.735 104.774 90.5866 109.429 84.5391 115.096C79.9027 119.549 75.2662 124.001 70.6298 128.454C68.4123 130.276 63.4735 135.639 55.8133 144.544C50.3705 150.819 46.4396 153.956 44.0206 153.956C43.4159 153.956 42.8111 153.753 42.2064 153.349C41.6016 152.741 40.5937 152.337 39.1826 152.134C38.5778 151.932 38.2755 151.224 38.2755 150.009C38.2755 143.937 67.1021 113.477 124.755 58.6274C164.266 20.9818 187.65 2.15897 194.907 2.15897C196.519 2.15897 197.93 3.06975 199.14 4.89132C200.349 6.51049 200.954 8.23085 200.954 10.0524C200.954 14.1003 194.503 22.7021 181.602 35.8579C161.04 56.7047 147.937 70.5688 142.293 77.4502C127.174 95.4635 111.35 115.905 94.8199 138.776C79.2979 160.433 69.5211 175.309 65.4894 183.404C79.3987 170.046 102.782 149.098 135.641 120.561C150.76 108.417 165.878 96.273 180.997 84.1293C195.511 73.6047 207.405 68.3424 216.678 68.3424C222.725 68.3424 225.749 74.2119 225.749 85.9508C225.749 92.8323 220.81 102.649 210.933 115.399C201.257 127.948 191.984 136.55 183.114 141.205C186.339 145.86 187.952 151.224 187.952 157.295C187.952 161.95 186.238 168.63 182.812 177.333C179.586 185.833 175.958 192.917 171.926 198.584C177.772 195.953 187.448 191.905 200.954 186.44C227.563 177.333 241.271 172.779 242.077 172.779C243.69 174.195 244.496 175.612 244.496 177.029Z"/><path d="M341.987 204.352C341.987 205.972 337.149 209.109 327.473 213.764C317.998 218.419 308.625 222.467 299.352 225.908C286.854 230.36 278.589 233.093 274.557 234.105C266.695 236.129 257.523 237.141 247.041 237.141C243.815 237.141 239.683 235.724 234.643 232.89C228.596 229.247 225.572 225.098 225.572 220.443C225.572 217.205 229.503 211.234 237.365 202.531C246.234 193.018 250.871 187.857 251.274 187.048C244.823 183.607 241.094 182.089 240.086 182.494C239.078 182.898 235.248 186.643 228.596 193.727C222.145 200.81 218.416 204.352 217.408 204.352C211.763 204.352 208.941 201.013 208.941 194.334C208.941 191.905 214.182 184.416 224.665 171.868C235.349 159.117 242.807 152.741 247.041 152.741C252.887 152.741 256.414 154.664 257.624 158.51C257.825 162.153 258.027 165.897 258.229 169.743C258.632 173.386 260.648 175.207 264.276 175.207C267.703 175.207 272.743 172.981 279.395 168.528C286.047 163.873 291.49 161.546 295.723 161.546C302.779 161.546 306.306 165.189 306.306 172.475C306.306 175.916 302.779 179.255 295.723 182.494C287.66 185.53 279.697 188.667 271.836 191.905C253.491 200.203 244.319 209.716 244.319 220.443C244.319 223.276 246.637 224.693 251.274 224.693C260.345 224.693 276.371 221.05 299.352 213.764C304.391 212.145 311.951 209.109 322.03 204.656C330.295 200.81 335.234 198.888 336.847 198.888C339.064 198.888 340.475 199.191 341.08 199.798C341.685 200.406 341.987 201.924 341.987 204.352Z"/><path d="M511.233 192.209C511.233 195.447 498.835 202.531 474.04 213.46C456.301 221.354 439.166 225.3 422.636 225.3C417.597 225.3 413.666 223.378 410.844 219.532C409.029 216.091 407.215 212.651 405.401 209.21C384.235 223.985 364.479 231.372 346.135 231.372C339.483 231.372 334.242 229.652 330.412 226.211C326.581 222.77 324.666 218.52 324.666 213.46C324.666 202.126 332.125 191.703 347.042 182.19C363.572 171.868 384.235 166.707 409.03 166.707C418.504 166.707 425.66 169.945 430.498 176.422C434.127 173.993 438.158 172.779 442.593 172.779C445.819 172.779 447.431 175.713 447.431 181.583C447.431 183 443.803 186.542 436.546 192.209C429.289 197.673 425.66 202.126 425.66 205.567C425.66 210.829 427.273 213.46 430.498 213.46C444.206 213.46 457.41 210.424 470.11 204.352C491.679 194.03 503.875 188.869 506.697 188.869C509.721 188.869 511.233 189.982 511.233 192.209ZM409.03 184.619C409.433 182.595 407.215 181.583 402.377 181.583C392.701 181.583 380.707 184.72 366.394 190.994C350.066 198.281 341.902 205.769 341.902 213.46C341.902 216.496 343.313 218.217 346.135 218.621C353.392 219.836 364.782 217.002 380.304 210.121C397.438 202.43 407.014 193.929 409.03 184.619Z"/><path d="M584.583 165.492C584.583 170.957 576.016 183.607 558.881 203.442C555.252 207.692 547.794 216.8 536.505 230.765C540.335 233.599 542.25 236.129 542.25 238.355C542.25 239.165 541.948 240.075 541.343 241.087C538.319 246.147 529.853 252.523 515.943 260.214C490.141 291.383 468.369 314.456 450.63 329.433C434.503 342.994 415.554 355.036 393.783 365.561C371.81 376.085 355.28 381.348 344.193 381.348C333.509 381.348 328.167 378.615 328.167 373.151C328.167 364.852 339.557 352 362.336 334.594C381.285 320.022 403.459 305.652 428.859 291.484C455.468 276.709 476.937 265.375 493.265 257.481C502.941 251.005 512.92 240.176 523.2 224.997C512.315 224.997 503.445 223.378 496.591 220.139C487.923 216.091 482.783 210.525 481.17 203.442C478.549 191.5 501.328 177.029 549.507 160.028C557.57 157.194 565.432 155.777 573.093 155.777C580.753 155.777 584.583 159.016 584.583 165.492ZM561.905 175.815C561.905 174.195 560.897 173.386 558.881 173.386C552.027 173.386 541.343 177.029 526.829 184.315C508.283 193.625 499.01 200.001 499.01 203.442C499.01 206.68 501.228 209.008 505.663 210.424C514.935 213.46 523.402 213.46 531.062 210.424C551.624 192.411 561.905 180.874 561.905 175.815ZM483.287 277.822C471.796 281.263 452.747 291.18 426.137 307.574C414.446 314.658 399.831 324.576 382.293 337.326C362.739 351.494 352.962 359.59 352.962 361.614C352.962 364.245 354.172 365.561 356.591 365.561C361.832 365.561 372.012 361.513 387.131 353.417C402.25 345.523 416.461 336.82 429.766 327.308C445.691 315.974 463.531 299.478 483.287 277.822Z"/><path d="M759.999 201.62C759.999 203.239 756.572 205.972 749.718 209.817C743.066 213.663 736.111 216.8 728.854 219.229C704.463 227.527 685.312 231.676 671.403 231.676C666.565 231.676 662.432 230.461 659.005 228.033C655.578 225.402 653.865 221.961 653.865 217.711C653.865 215.484 656.889 210.93 662.936 204.049C668.177 198.584 673.318 193.018 678.357 187.351C665.053 189.375 649.531 194.637 631.791 203.138C604.174 216.294 589.156 222.872 586.737 222.872C582.101 222.872 579.783 220.342 579.783 215.282C579.783 212.448 583.814 207.388 591.878 200.102C600.143 192.816 604.275 187.958 604.275 185.53C604.275 179.863 604.678 175.41 605.485 172.171C606.493 168.933 610.02 167.314 616.068 167.314C619.092 167.314 621.41 168.933 623.022 172.171C624.635 175.207 625.139 178.749 624.534 182.797C623.93 187.048 622.216 191.298 619.394 195.548C627.659 191.905 641.165 186.542 659.912 179.458C679.265 173.183 694.182 170.046 704.664 170.046C708.897 170.046 711.014 172.374 711.014 177.029C711.014 178.851 707.688 181.886 701.036 186.137C692.368 191.601 686.622 195.852 683.8 198.888C674.124 209.21 669.286 215.484 669.286 217.711C669.286 220.342 672.31 221.657 678.357 221.657C687.429 221.657 702.044 218.52 722.202 212.246C727.242 210.627 734.297 207.894 743.368 204.049C751.23 200.608 755.464 198.888 756.068 198.888C758.689 198.888 759.999 199.799 759.999 201.62Z"/></g><g transform="translate(-15.85,0.61) scale(1.13293)"><path d="M808.391 216.496C808.391 219.532 807.383 222.366 805.367 224.997C803.352 227.426 800.933 228.741 798.11 228.944C794.684 229.146 791.66 228.235 789.039 226.211C786.62 223.985 785.411 221.151 785.411 217.711C785.411 214.472 786.721 211.436 789.341 208.603C791.962 205.769 794.885 204.454 798.11 204.656C804.964 205.263 808.391 209.21 808.391 216.496Z"/></g></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="Bragn. — в начало">
+      <svg viewBox="0 0 902 430" width="120" height="57" style="height:57px;width:auto" role="img" aria-label="Bragn."><use href="#logo-sig"></use></svg>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-5 lg:gap-8" aria-label="Основная навигация">
+      <a class="nav-link" href="#projects" data-nav>Портфолио</a>
+      <a class="nav-link" href="#process" data-nav>Состав дизайн-проекта</a>
+      <a class="nav-link" href="#about" data-nav>Обо мне</a>
+      <a class="nav-link" href="#contact" data-nav>Контакт</a>
+    </nav>
+
+    <a class="hidden lg:inline-flex items-center gap-3 eyebrow" href="#contact">
+      <span>Написать</span>
+      <svg width="22" height="8" viewBox="0 0 22 8" fill="none" aria-hidden="true"><path d="M0 4h20M17 1l3 3-3 3" stroke="currentColor" stroke-width="1"/></svg>
+    </a>
+
+    <div class="head-contact lg:hidden">
+      <a href="https://t.me/bragaa_n" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M9.05 15.5l-.4 5.35c.55 0 .79-.24 1.08-.52l2.58-2.46 5.35 3.92c.98.54 1.68.26 1.94-.9l3.52-16.5c.3-1.43-.53-2-1.48-1.65L1.9 10.36c-1.4.55-1.38 1.33-.24 1.68l4.9 1.53L17.4 6.2c.53-.35 1.02-.16.62.2z"/></svg>
+      </a>
+      <a href="https://wa.me/79295130428" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5l-4.4 1.3 1.4-4.3A8.5 8.5 0 1 1 20.5 11.7z"/><path d="M8.7 8.3c.3-.6 1.2-.5 1.5.1l.7 1.5c.2.4 0 .8-.3 1l-.5.3c.4 1.2 1.4 2.2 2.6 2.6l.4-.5c.2-.3.6-.4 1-.2l1.5.7c.6.3.6 1.2 0 1.5-1 .5-2.1.6-3.1.2-2.6-1-4.6-3-5.6-5.6-.3-1-.3-1.7.1-2.6z"/></svg>
+      </a>
+      <a href="https://max.ru/u/f9LHodD0cOKV2m6dhh8g6VKo49j3tlS7f_T8dYNlxXjqPDJKiuAitUTyERg" target="_blank" rel="noopener noreferrer" aria-label="MAX">
+        <span class="max-mark" aria-hidden="true">MAX</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ═══════════════ СЕКЦИЯ 1 · HERO ═══════════════ -->
+  <section class="hero" aria-label="Bragn. — интерьер и искусство">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <img class="hero-plan" src="assets/img/plans/plan03.webp" alt="" aria-hidden="true" width="1404" height="972" fetchpriority="high">
+    <div class="hero-ruler hidden lg:block" aria-hidden="true"></div>
+    <span class="hero-mark tl" aria-hidden="true"></span>
+    <span class="hero-mark tr" aria-hidden="true"></span>
+    <span class="hero-mark bl" aria-hidden="true"></span>
+    <span class="hero-mark br" aria-hidden="true"></span>
+
+    <div class="shell flex items-start justify-between gap-6 pt-2">
+      <p class="meta leading-relaxed hero-meta">Анастасия Брагинец<br><span style="letter-spacing:.06em;text-transform:none">дизайнер интерьера и художник</span></p>
+    </div>
+
+    <div class="shell logo-stage">
+      <div class="logo-wrap">
+        <h1 class="sr-only">Bragn. — дизайн интерьера и живопись. Анастасия Брагинец</h1>
+        <svg class="logo-sig" id="heroLogo" viewBox="0 0 902 430" width="902" height="430" role="img" aria-label="Bragn.">
+          <defs><mask id="pen-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="902" height="430"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"><path class="pen" data-l="0" d="M47.0 165.0 L100.0 111.0 L123.0 102.0 L118.0 122.0 L67.0 195.0 L64.0 210.0 L67.0 211.0 L72.0 202.0 L73.0 204.0 L68.0 211.0 L80.0 208.0 L124.0 165.0 L209.0 96.0 L223.0 87.0 L243.0 85.0 L244.0 97.0 L238.0 115.0 L226.0 131.0 L201.0 153.0 L197.0 165.0 L200.0 171.0 L199.0 187.0 L195.0 204.0 L189.0 213.0 L188.0 226.0 L173.0 237.0 L146.0 250.0" stroke-width="30.9"/><path class="pen" data-l="0" d="M189.0 226.0 L192.0 220.0 L193.0 222.0 L190.0 227.0 L202.0 225.0 L270.0 197.0" stroke-width="30.9"/><path class="pen" data-l="0" d="M124.0 101.0 L162.0 59.0 L216.0 9.0" stroke-width="30.9"/><path class="pen" data-l="0" d="M64.0 212.0 L8.0 279.0" stroke-width="30.9"/><path class="pen" data-l="1" d="M242.0 219.0 L262.0 196.0 L276.0 191.0 L288.0 201.0 L291.0 208.0 L287.0 216.0 L273.0 229.0 L265.0 246.0 L267.0 253.0 L274.0 258.0 L294.0 258.0 L312.0 254.0 L348.0 242.0 L380.0 227.0" stroke-width="30.9"/><path class="pen" data-l="1" d="M332.0 191.0 L304.0 204.0 L292.0 206.0 L277.0 190.0 L277.0 188.0" stroke-width="30.9"/><path class="pen" data-l="2" d="M469.0 227.0 L474.0 244.0 L500.0 244.0 L535.0 233.0 L572.0 214.0" stroke-width="40.5"/><path class="pen" data-l="2" d="M496.0 200.0 L473.0 208.0 L469.0 226.0 L451.0 230.0 L422.0 246.0 L399.0 252.0 L385.0 252.0 L378.0 248.0 L375.0 239.0 L377.0 227.0 L393.0 212.0 L424.0 198.0 L463.0 194.0 L469.0 197.0 L473.0 207.0" stroke-width="40.5"/><path class="pen" data-l="3" d="M551.0 305.0 L528.0 310.0 L450.0 355.0 L397.0 394.0 L390.0 401.0 L386.0 416.0 L383.0 418.0 L399.0 419.0 L418.0 415.0 L475.0 385.0 L513.0 356.0 L546.0 323.0 L553.0 309.0 L551.0 306.0 L544.0 311.0 L546.0 312.0 L553.0 305.0 L595.0 268.0 L597.0 247.0 L607.0 242.0 L636.0 210.0 L645.0 185.0 L628.0 185.0 L603.0 192.0 L556.0 218.0 L554.0 229.0 L558.0 238.0 L573.0 244.0 L596.0 246.0" stroke-width="36.8"/><path class="pen" data-l="4" d="M662.0 241.0 L690.0 222.0 L693.0 200.0 L700.0 219.0 L699.0 217.0 L696.0 222.0 L690.0 224.0 L706.0 223.0 L738.0 209.0 L773.0 202.0 L770.0 215.0 L750.0 238.0 L749.0 248.0 L754.0 253.0 L782.0 252.0 L799.0 248.0 L830.0 238.0 L855.0 225.0" stroke-width="25.8"/><path class="pen" data-l="4" d="M793.0 196.0 L775.0 203.0" stroke-width="25.8"/><path class="pen" data-l="5" d="M887.0 246.0 L888.5 246.0" stroke-width="38.0"/></g></mask></defs>
+          <g id="logoFill" fill="currentColor" mask="url(#pen-mask)"><g transform="translate(-2.25,-2.45) scale(1.13293)"><path d="M244.496 177.029C244.496 180.065 238.247 184.113 225.749 189.173C215.468 193.221 205.187 197.167 194.907 201.013C193.496 201.62 181.703 206.984 159.529 217.103C144.813 223.985 135.036 227.426 130.198 227.426C128.182 227.426 126.67 226.211 125.662 223.782C124.654 220.949 127.88 217.812 135.338 214.371C145.014 210.323 151.062 206.68 153.481 203.442C161.141 193.524 165.374 187.756 166.181 186.137C170.011 179.458 171.926 171.564 171.926 162.456C171.926 160.837 170.616 158.915 167.995 156.688C165.375 154.259 164.064 152.033 164.064 150.009C164.064 146.366 166.987 141.913 172.833 136.651C178.881 131.186 184.928 125.823 190.976 120.561C196.419 115.501 201.156 109.935 205.187 103.863C209.421 97.5886 211.537 92.8323 211.537 89.594C211.537 87.1652 211.336 85.5461 210.933 84.7365C210.529 83.9269 209.219 83.5221 207.002 83.5221C204.784 83.5221 195.612 89.594 179.485 101.738C164.165 112.87 149.449 124.406 135.338 136.347C121.429 148.289 106.915 161.849 91.7961 177.029C79.2979 189.375 61.4577 207.085 38.2755 230.158C32.0263 236.635 25.7772 243.111 19.5281 249.588C13.8837 254.85 10.0536 257.077 8.03778 256.267C4.00609 254.041 1.99025 252.017 1.99025 250.195C1.99025 244.123 18.8226 219.127 52.4872 175.207C59.341 166.302 68.2108 153.551 79.0963 136.955C92.8041 116.108 100.767 104.166 102.984 101.131C96.735 104.774 90.5866 109.429 84.5391 115.096C79.9027 119.549 75.2662 124.001 70.6298 128.454C68.4123 130.276 63.4735 135.639 55.8133 144.544C50.3705 150.819 46.4396 153.956 44.0206 153.956C43.4159 153.956 42.8111 153.753 42.2064 153.349C41.6016 152.741 40.5937 152.337 39.1826 152.134C38.5778 151.932 38.2755 151.224 38.2755 150.009C38.2755 143.937 67.1021 113.477 124.755 58.6274C164.266 20.9818 187.65 2.15897 194.907 2.15897C196.519 2.15897 197.93 3.06975 199.14 4.89132C200.349 6.51049 200.954 8.23085 200.954 10.0524C200.954 14.1003 194.503 22.7021 181.602 35.8579C161.04 56.7047 147.937 70.5688 142.293 77.4502C127.174 95.4635 111.35 115.905 94.8199 138.776C79.2979 160.433 69.5211 175.309 65.4894 183.404C79.3987 170.046 102.782 149.098 135.641 120.561C150.76 108.417 165.878 96.273 180.997 84.1293C195.511 73.6047 207.405 68.3424 216.678 68.3424C222.725 68.3424 225.749 74.2119 225.749 85.9508C225.749 92.8323 220.81 102.649 210.933 115.399C201.257 127.948 191.984 136.55 183.114 141.205C186.339 145.86 187.952 151.224 187.952 157.295C187.952 161.95 186.238 168.63 182.812 177.333C179.586 185.833 175.958 192.917 171.926 198.584C177.772 195.953 187.448 191.905 200.954 186.44C227.563 177.333 241.271 172.779 242.077 172.779C243.69 174.195 244.496 175.612 244.496 177.029Z"/><path d="M341.987 204.352C341.987 205.972 337.149 209.109 327.473 213.764C317.998 218.419 308.625 222.467 299.352 225.908C286.854 230.36 278.589 233.093 274.557 234.105C266.695 236.129 257.523 237.141 247.041 237.141C243.815 237.141 239.683 235.724 234.643 232.89C228.596 229.247 225.572 225.098 225.572 220.443C225.572 217.205 229.503 211.234 237.365 202.531C246.234 193.018 250.871 187.857 251.274 187.048C244.823 183.607 241.094 182.089 240.086 182.494C239.078 182.898 235.248 186.643 228.596 193.727C222.145 200.81 218.416 204.352 217.408 204.352C211.763 204.352 208.941 201.013 208.941 194.334C208.941 191.905 214.182 184.416 224.665 171.868C235.349 159.117 242.807 152.741 247.041 152.741C252.887 152.741 256.414 154.664 257.624 158.51C257.825 162.153 258.027 165.897 258.229 169.743C258.632 173.386 260.648 175.207 264.276 175.207C267.703 175.207 272.743 172.981 279.395 168.528C286.047 163.873 291.49 161.546 295.723 161.546C302.779 161.546 306.306 165.189 306.306 172.475C306.306 175.916 302.779 179.255 295.723 182.494C287.66 185.53 279.697 188.667 271.836 191.905C253.491 200.203 244.319 209.716 244.319 220.443C244.319 223.276 246.637 224.693 251.274 224.693C260.345 224.693 276.371 221.05 299.352 213.764C304.391 212.145 311.951 209.109 322.03 204.656C330.295 200.81 335.234 198.888 336.847 198.888C339.064 198.888 340.475 199.191 341.08 199.798C341.685 200.406 341.987 201.924 341.987 204.352Z"/><path d="M511.233 192.209C511.233 195.447 498.835 202.531 474.04 213.46C456.301 221.354 439.166 225.3 422.636 225.3C417.597 225.3 413.666 223.378 410.844 219.532C409.029 216.091 407.215 212.651 405.401 209.21C384.235 223.985 364.479 231.372 346.135 231.372C339.483 231.372 334.242 229.652 330.412 226.211C326.581 222.77 324.666 218.52 324.666 213.46C324.666 202.126 332.125 191.703 347.042 182.19C363.572 171.868 384.235 166.707 409.03 166.707C418.504 166.707 425.66 169.945 430.498 176.422C434.127 173.993 438.158 172.779 442.593 172.779C445.819 172.779 447.431 175.713 447.431 181.583C447.431 183 443.803 186.542 436.546 192.209C429.289 197.673 425.66 202.126 425.66 205.567C425.66 210.829 427.273 213.46 430.498 213.46C444.206 213.46 457.41 210.424 470.11 204.352C491.679 194.03 503.875 188.869 506.697 188.869C509.721 188.869 511.233 189.982 511.233 192.209ZM409.03 184.619C409.433 182.595 407.215 181.583 402.377 181.583C392.701 181.583 380.707 184.72 366.394 190.994C350.066 198.281 341.902 205.769 341.902 213.46C341.902 216.496 343.313 218.217 346.135 218.621C353.392 219.836 364.782 217.002 380.304 210.121C397.438 202.43 407.014 193.929 409.03 184.619Z"/><path d="M584.583 165.492C584.583 170.957 576.016 183.607 558.881 203.442C555.252 207.692 547.794 216.8 536.505 230.765C540.335 233.599 542.25 236.129 542.25 238.355C542.25 239.165 541.948 240.075 541.343 241.087C538.319 246.147 529.853 252.523 515.943 260.214C490.141 291.383 468.369 314.456 450.63 329.433C434.503 342.994 415.554 355.036 393.783 365.561C371.81 376.085 355.28 381.348 344.193 381.348C333.509 381.348 328.167 378.615 328.167 373.151C328.167 364.852 339.557 352 362.336 334.594C381.285 320.022 403.459 305.652 428.859 291.484C455.468 276.709 476.937 265.375 493.265 257.481C502.941 251.005 512.92 240.176 523.2 224.997C512.315 224.997 503.445 223.378 496.591 220.139C487.923 216.091 482.783 210.525 481.17 203.442C478.549 191.5 501.328 177.029 549.507 160.028C557.57 157.194 565.432 155.777 573.093 155.777C580.753 155.777 584.583 159.016 584.583 165.492ZM561.905 175.815C561.905 174.195 560.897 173.386 558.881 173.386C552.027 173.386 541.343 177.029 526.829 184.315C508.283 193.625 499.01 200.001 499.01 203.442C499.01 206.68 501.228 209.008 505.663 210.424C514.935 213.46 523.402 213.46 531.062 210.424C551.624 192.411 561.905 180.874 561.905 175.815ZM483.287 277.822C471.796 281.263 452.747 291.18 426.137 307.574C414.446 314.658 399.831 324.576 382.293 337.326C362.739 351.494 352.962 359.59 352.962 361.614C352.962 364.245 354.172 365.561 356.591 365.561C361.832 365.561 372.012 361.513 387.131 353.417C402.25 345.523 416.461 336.82 429.766 327.308C445.691 315.974 463.531 299.478 483.287 277.822Z"/><path d="M759.999 201.62C759.999 203.239 756.572 205.972 749.718 209.817C743.066 213.663 736.111 216.8 728.854 219.229C704.463 227.527 685.312 231.676 671.403 231.676C666.565 231.676 662.432 230.461 659.005 228.033C655.578 225.402 653.865 221.961 653.865 217.711C653.865 215.484 656.889 210.93 662.936 204.049C668.177 198.584 673.318 193.018 678.357 187.351C665.053 189.375 649.531 194.637 631.791 203.138C604.174 216.294 589.156 222.872 586.737 222.872C582.101 222.872 579.783 220.342 579.783 215.282C579.783 212.448 583.814 207.388 591.878 200.102C600.143 192.816 604.275 187.958 604.275 185.53C604.275 179.863 604.678 175.41 605.485 172.171C606.493 168.933 610.02 167.314 616.068 167.314C619.092 167.314 621.41 168.933 623.022 172.171C624.635 175.207 625.139 178.749 624.534 182.797C623.93 187.048 622.216 191.298 619.394 195.548C627.659 191.905 641.165 186.542 659.912 179.458C679.265 173.183 694.182 170.046 704.664 170.046C708.897 170.046 711.014 172.374 711.014 177.029C711.014 178.851 707.688 181.886 701.036 186.137C692.368 191.601 686.622 195.852 683.8 198.888C674.124 209.21 669.286 215.484 669.286 217.711C669.286 220.342 672.31 221.657 678.357 221.657C687.429 221.657 702.044 218.52 722.202 212.246C727.242 210.627 734.297 207.894 743.368 204.049C751.23 200.608 755.464 198.888 756.068 198.888C758.689 198.888 759.999 199.799 759.999 201.62Z"/></g><g transform="translate(-15.85,0.61) scale(1.13293)"><path d="M808.391 216.496C808.391 219.532 807.383 222.366 805.367 224.997C803.352 227.426 800.933 228.741 798.11 228.944C794.684 229.146 791.66 228.235 789.039 226.211C786.62 223.985 785.411 221.151 785.411 217.711C785.411 214.472 786.721 211.436 789.341 208.603C791.962 205.769 794.885 204.454 798.11 204.656C804.964 205.263 808.391 209.21 808.391 216.496Z"/></g></g>
+        </svg>
+        <p class="hero-tag">Interior &amp; Art.</p>
+
+        <nav class="hero-nav md:hidden" aria-label="Разделы сайта">
+          <a href="#projects"><span>Портфолио</span><span class="n">01</span></a>
+          <a href="#process"><span>Состав дизайн-проекта</span><span class="n">02</span></a>
+          <a href="#about"><span>Обо мне</span><span class="n">03</span></a>
+          <a href="#contact"><span>Контакт</span><span class="n">04</span></a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="shell flex items-end justify-end gap-6">
+      <div class="scroll-cue" aria-hidden="true">
+        <span class="eyebrow" style="font-size:9.5px;letter-spacing:.3em">Scroll</span>
+        <span class="line"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ СЕКЦИЯ 2 · ПОРТФОЛИО ═══════════════ -->
+  <section id="projects" class="section section--tight border-t border-ink" aria-labelledby="projects-title">
+    <div class="shell">
+
+      <div class="grid lg:grid-cols-12 gap-x-8 gap-y-5 items-start">
+        <h2 id="projects-title" class="display display-l display-projects reveal lg:col-span-7">Избранные<br>проекты</h2>
+        <p class="hand hidden md:block text-xl -rotate-1 max-w-[24ch] lg:col-span-4 lg:col-start-9 lg:text-right lg:translate-x-7 reveal" style="--d:120ms">каждый кадр — чей-то<br>вечер в этом доме</p>
+      </div>
+
+      <div class="mt-[clamp(2rem,5vw,4rem)] grid lg:grid-cols-12 gap-x-[clamp(16px,2vw,34px)] gap-y-14">
+
+        <!-- прикреплённая сортировка -->
+        <aside class="lg:col-span-2 lg:sticky lg:top-[92px] self-start">
+          <p class="eyebrow">Категории</p>
+          <ul class="filter mt-4" role="list">
+            <li><button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">Все работы</button></li>
+            <li><button type="button" class="filter-btn" data-filter="wood" aria-pressed="false">Деревянные дома</button></li>
+            <li><button type="button" class="filter-btn" data-filter="stone" aria-pressed="false">Квартиры &amp; каменные дома</button></li>
+            <li><button type="button" class="filter-btn" data-filter="art" aria-pressed="false">Интерьерные картины</button></li>
+            <li><button type="button" class="filter-btn" data-filter="concept" aria-pressed="false">Свободные концепции</button></li>
+          </ul>
+        </aside>
+
+        <!-- сетка проектов -->
+        <div class="lg:col-span-10">
+          <div id="grid" class="card-grid">
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p01.webp" data-caption="Гостиная 41м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p01-800.webp" srcset="assets/img/projects-webp/p01-800.webp 800w, assets/img/projects-webp/p01.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостиная 41м2. Дом из оцилиндрованного бревна" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостиная 41м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">01</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p02.webp" data-caption="Кухня-гостиная 62м2. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p02-800.webp" srcset="assets/img/projects-webp/p02-800.webp 800w, assets/img/projects-webp/p02.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Кухня-гостиная 62м2. Дом из бруса" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Кухня-гостиная 62м2. Дом из бруса</span>
+                  <span class="card-num">02</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="1.3699">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p03.webp" data-caption="Кабинет 16м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p03-800.webp" srcset="assets/img/projects-webp/p03-800.webp 800w, assets/img/projects-webp/p03.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Кабинет 16м2. Дом из оцилиндрованного бревна" width="1400" height="1022" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Кабинет 16м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">03</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.7536">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p10.webp" data-caption="Спальня 25м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p10-800.webp" srcset="assets/img/projects-webp/p10-800.webp 800w, assets/img/projects-webp/p10.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Спальня 25м2" width="1055" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Спальня 25м2</span>
+                  <span class="card-num">04</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8" data-pair="1">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p07.webp" data-caption="Гостевой санузел 5м2. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p07-800.webp" srcset="assets/img/projects-webp/p07-800.webp 800w, assets/img/projects-webp/p07.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостевой санузел 5м2. Дом из бруса" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостевой санузел 5м2. Дом из бруса</span>
+                  <span class="card-num">05</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8" data-pair="1">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p08.webp" data-caption="Хозяйский санузел 6м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p08-800.webp" srcset="assets/img/projects-webp/p08-800.webp 800w, assets/img/projects-webp/p08.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйский санузел 6м2. Дом из оцилиндрованного бревна" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйский санузел 6м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">06</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p04.webp" data-caption="Детская спальня 18м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p04-800.webp" srcset="assets/img/projects-webp/p04-800.webp 800w, assets/img/projects-webp/p04.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Детская спальня 18м2. Дом из оцилиндрованного бревна" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Детская спальня 18м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">07</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p05.webp" data-caption="Хозяйская спальня 14м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p05-800.webp" srcset="assets/img/projects-webp/p05-800.webp 800w, assets/img/projects-webp/p05.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйская спальня 14м2. Дом из оцилиндрованного бревна" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйская спальня 14м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">08</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="1.3072">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p11.webp" data-caption="Хозяйская спальня 18м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p11-800.webp" srcset="assets/img/projects-webp/p11-800.webp 800w, assets/img/projects-webp/p11.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйская спальня 18м2" width="1400" height="1071" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйская спальня 18м2</span>
+                  <span class="card-num">09</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p12.webp" data-caption="Кухня 16м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p12-800.webp" srcset="assets/img/projects-webp/p12-800.webp 800w, assets/img/projects-webp/p12.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Кухня 16м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Кухня 16м2</span>
+                  <span class="card-num">10</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p06.webp" data-caption="Прихожая 5.7м2. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p06-800.webp" srcset="assets/img/projects-webp/p06-800.webp 800w, assets/img/projects-webp/p06.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Прихожая 5.7м2. Дом из бруса" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Прихожая 5.7м2. Дом из бруса</span>
+                  <span class="card-num">11</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8193">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p13.webp" data-caption="Детская спальня 18м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p13-800.webp" srcset="assets/img/projects-webp/p13-800.webp 800w, assets/img/projects-webp/p13.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Детская спальня 18м2" width="1147" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Детская спальня 18м2</span>
+                  <span class="card-num">12</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p14.webp" data-caption="Гостевая спальня 9м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p14-800.webp" srcset="assets/img/projects-webp/p14-800.webp 800w, assets/img/projects-webp/p14.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостевая спальня 9м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостевая спальня 9м2</span>
+                  <span class="card-num">13</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p15.webp" data-caption="Хозяйская спальня 16м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p15-800.webp" srcset="assets/img/projects-webp/p15-800.webp 800w, assets/img/projects-webp/p15.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйская спальня 16м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйская спальня 16м2</span>
+                  <span class="card-num">14</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p09.webp" data-caption="Холл. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p09-800.webp" srcset="assets/img/projects-webp/p09-800.webp 800w, assets/img/projects-webp/p09.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Холл. Дом из бруса" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Холл. Дом из бруса</span>
+                  <span class="card-num">15</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p16.webp" data-caption="Холл 3м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p16-800.webp" srcset="assets/img/projects-webp/p16-800.webp 800w, assets/img/projects-webp/p16.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Холл 3м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Холл 3м2</span>
+                  <span class="card-num">16</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p17.webp" data-caption="Гостевая спальня 10м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p17-800.webp" srcset="assets/img/projects-webp/p17-800.webp 800w, assets/img/projects-webp/p17.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостевая спальня 10м2. Дом из оцилиндрованного бревна" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостевая спальня 10м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">17</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="1.3699">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p19.webp" data-caption="Кабинет 16м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p19-800.webp" srcset="assets/img/projects-webp/p19-800.webp 800w, assets/img/projects-webp/p19.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Кабинет 16м2. Дом из оцилиндрованного бревна" width="1400" height="1022" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Кабинет 16м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">18</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.85">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p18.webp" data-caption="Гостиная 16м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p18-800.webp" srcset="assets/img/projects-webp/p18-800.webp 800w, assets/img/projects-webp/p18.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостиная 16м2. Дом из оцилиндрованного бревна" width="1190" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостиная 16м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">19</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8971">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p20.webp" data-caption="Кухня 26м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p20-800.webp" srcset="assets/img/projects-webp/p20-800.webp 800w, assets/img/projects-webp/p20.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Кухня 26м2. Дом из оцилиндрованного бревна" width="1256" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Кухня 26м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">20</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.6521">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p21.webp" data-caption="Постирочная 3,5м2. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p21-800.webp" srcset="assets/img/projects-webp/p21-800.webp 800w, assets/img/projects-webp/p21.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Постирочная 3,5м2. Дом из бруса" width="913" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Постирочная 3,5м2. Дом из бруса</span>
+                  <span class="card-num">21</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8057">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p22.webp" data-caption="Проихожая 10м2. Дом из оцилиндрованного бревна">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p22-800.webp" srcset="assets/img/projects-webp/p22-800.webp 800w, assets/img/projects-webp/p22.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Проихожая 10м2. Дом из оцилиндрованного бревна" width="1128" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Проихожая 10м2. Дом из оцилиндрованного бревна</span>
+                  <span class="card-num">22</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8" data-pair="1">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p23.webp" data-caption="Хозяйский санузел 6м2. Дом из бруса">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p23-800.webp" srcset="assets/img/projects-webp/p23-800.webp 800w, assets/img/projects-webp/p23.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйский санузел 6м2. Дом из бруса" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйский санузел 6м2. Дом из бруса</span>
+                  <span class="card-num">23</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="wood" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p24.webp" data-caption="Хоз. спальня 22">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p24-800.webp" srcset="assets/img/projects-webp/p24-800.webp 800w, assets/img/projects-webp/p24.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хоз. спальня 22" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хоз. спальня 22</span>
+                  <span class="card-num">24</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.7614" data-pair="1">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p25.webp" data-caption="Гостевой санузел 10м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p25-800.webp" srcset="assets/img/projects-webp/p25-800.webp 800w, assets/img/projects-webp/p25.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Гостевой санузел 10м2" width="1066" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Гостевой санузел 10м2</span>
+                  <span class="card-num">25</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.75">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p26.webp" data-caption="Спальня 25м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p26-800.webp" srcset="assets/img/projects-webp/p26-800.webp 800w, assets/img/projects-webp/p26.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Спальня 25м2" width="1050" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Спальня 25м2</span>
+                  <span class="card-num">26</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p27.webp" data-caption="Хозяйская спальня 10м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p27-800.webp" srcset="assets/img/projects-webp/p27-800.webp 800w, assets/img/projects-webp/p27.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйская спальня 10м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйская спальня 10м2</span>
+                  <span class="card-num">27</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="stone" data-ratio="0.8">
+              <button type="button" class="card-btn" data-src="assets/img/projects-webp/p28.webp" data-caption="Хозяйская спальня 18м2">
+                <span class="card-media reveal-img">
+                  <img src="assets/img/projects-webp/p28-800.webp" srcset="assets/img/projects-webp/p28-800.webp 800w, assets/img/projects-webp/p28.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Интерьер: Хозяйская спальня 18м2" width="1120" height="1400" loading="lazy" decoding="async">
+                  <span class="card-hover"><span class="hand">смотреть</span></span>
+                </span>
+                <span class="card-caption">
+                  <span class="card-title">Хозяйская спальня 18м2</span>
+                  <span class="card-num">28</span>
+                </span>
+              </button>
+            </article>
+            <article class="card" data-cat="art">
+              <div class="card-empty">
+                <p class="eyebrow">Раздел в работе</p>
+                <p class="hand">живопись</p>
+                <p class="caption">Картины для интерьера пишутся под конкретную стену и свет. Скоро здесь появится серия — пока её можно посмотреть в соцсетях.</p>
+                <a class="card-link" href="#contact">Спросить про картины
+                  <svg width="18" height="7" viewBox="0 0 18 7" fill="none" aria-hidden="true"><path d="M0 3.5h16M13 .5l3 3-3 3" stroke="currentColor"/></svg>
+                </a>
+              </div>
+            </article>
+            <article class="card" data-cat="concept">
+              <div class="card-empty">
+                <p class="eyebrow">Раздел в работе</p>
+                <p class="hand">свободные концепции</p>
+                <p class="caption">Эксперименты вне договора: свет, материал, тишина. Сюда попадают идеи, которые ещё ищут свой дом.</p>
+                <a class="card-link" href="#contact">Обсудить идею
+                  <svg width="18" height="7" viewBox="0 0 18 7" fill="none" aria-hidden="true"><path d="M0 3.5h16M13 .5l3 3-3 3" stroke="currentColor"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+          <p class="caption mt-10 lg:hidden">Показано <span id="shownCount">10</span> работ</p>
+
+          <button type="button" class="more" id="moreBtn" aria-controls="grid">
+            <span class="eyebrow">Смотреть больше</span>
+            <span class="more-arrow" aria-hidden="true">
+              <svg width="14" height="24" viewBox="0 0 14 24" fill="none"><path d="M7 0v22M1 16l6 6 6-6" stroke="currentColor"/></svg>
+            </span>
+          </button>
+
+
+          <div class="mt-12">
+            <p class="caption">Не нашли свой формат? Дома из бруса, квартиры в новостройках, апартаменты под сдачу — считаем так же честно.</p>
+            <a class="eyebrow inline-flex items-center gap-2 mt-4 pen-underline" href="#contact">
+              Обсудить проект
+              <svg width="20" height="7" viewBox="0 0 20 7" fill="none" aria-hidden="true"><path d="M0 3.5h18M15 .5l3 3-3 3" stroke="currentColor"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ СЕКЦИЯ 3 · ПРОЦЕСС (горизонтальный таймлайн) ═══════════════ -->
+  <section id="process" class="tl-section bg-white border-t border-ink" aria-labelledby="process-title">
+
+    <header class="tl-head shell">
+      <div class="tl-head-row">
+        <h2 id="process-title" class="display display-xl display-process">Структура<br>проекта</h2>
+        <div class="tl-head-side">
+          <p class="lead">Четыре этапа. Каждый опирается на предыдущий — и вместе они дают стройке готовый набор решений и чертежей.</p>
+          <p class="tl-hint"><span class="tl-hint-line" aria-hidden="true"></span>прокрутите — этапы идут вбок</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="tl-wrap" id="tlWrap">
+      <div class="tl-pin">
+        <div class="tl-track" id="tlTrack">
+
+          <article class="tl-card" data-step="1">
+            <div class="tl-card-head"></div>
+            <div class="tl-title-row">
+              <h3 class="display display-m tl-title">Обмерочный чертёж и инженерно-технический аудит</h3>
+              <p class="tl-step">Этап <span class="tl-num">01</span></p>
+            </div>
+            <div class="tl-body">
+              <div class="tl-text">
+                <p class="body-text">Проводим высокоточные лазерные обмеры помещений с фиксацией всех конструктивных особенностей, перепадов, расположения инженерных коммуникаций и существующих проёмов.</p>
+                <p class="body-text hide-mobile">Этот этап формирует объективную базу для всех последующих проектных решений и минимизирует риски ошибок и несоответствий.</p>
+              </div>
+              <figure class="tl-figure">
+                <div class="plan-frame"><img src="assets/img/plans/audit.webp" alt="Лазерный обмер помещения на объекте" width="1400" height="903" loading="lazy"></div>
+                <figcaption class="hand plan-note">тут появляются<br>первые цифры</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="tl-card tl-card--plan" data-step="2">
+            <div class="tl-card-head"></div>
+            <div class="tl-title-row">
+              <h3 class="display display-m tl-title">Эскизное планировочное решение, мебелировка</h3>
+              <p class="tl-step">Этап <span class="tl-num">02</span></p>
+            </div>
+            <div class="tl-body">
+              <div class="tl-text">
+                <p class="body-text">Разрабатываем несколько вариантов планировочных решений, направленных на оптимизацию эргономики и функциональности пространства.</p>
+              </div>
+              <figure class="tl-figure">
+                <div class="plan-frame plan-frame--wide"><img src="assets/img/plans/plan-c.webp" alt="Планировочное решение дома с расстановкой мебели" width="1600" height="824" loading="lazy"></div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="tl-card" data-step="3">
+            <div class="tl-card-head"></div>
+            <div class="tl-title-row">
+              <h3 class="display display-m tl-title">Фотореалистичная 3D-визуализация</h3>
+              <p class="tl-step">Этап <span class="tl-num">03</span></p>
+            </div>
+            <div class="tl-body">
+              <div class="tl-text">
+                <p class="body-text">Эскизные решения выполняются в графических программах.</p>
+                <p class="body-text">Этот этап позволяет заранее увидеть и откорректировать задуманный дизайн — не переделывая ремонт через пару лет или в его процессе.</p>
+                <p class="body-text">Часть проекта, в которую интересно, при желании, вовлекаться и сотворить вместе дом вашей мечты.</p>
+              </div>
+              <figure class="tl-figure">
+                <div class="plan-frame"><img src="assets/img/projects-webp/p10-800.webp" srcset="assets/img/projects-webp/p10-800.webp 800w, assets/img/projects-webp/p10.webp 1120w" sizes="(max-width: 700px) 92vw, 430px" alt="Фотореалистичная визуализация спальни" width="1055" height="1400" loading="lazy"></div>
+                <figcaption class="hand plan-note">можно потрогать<br>свет до стройки</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="tl-card tl-card--wide" data-step="4">
+            <div class="tl-card-head"></div>
+            <div class="tl-title-row">
+              <h3 class="display display-m tl-title">Рабочая проектная документация</h3>
+              <p class="tl-step">Этап <span class="tl-num">04</span></p>
+            </div>
+            <div class="tl-body">
+              <div class="tl-text">
+                <p class="body-text">Пакет чертежей и спецификаций — руководство к действию для строителей различного профиля и поставщиков материалов.</p>
+                <p class="body-text">Данный пакет позволяет: понять стоимость работ, определить их сроки, ответить на большинство вопросов до их возникновения на стройке.</p>
+                <p class="eyebrow mt-7">В рабочую документацию входят</p>
+                <ol class="num-list num-list--cols mt-3" role="list">
+                  <li><span class="idx">01</span><span>План монтажа и демонтажа перегородок</span></li>
+                  <li><span class="idx">02</span><span>План размещения светильников и выключателей по группам</span></li>
+                  <li><span class="idx">03</span><span>План расстановки силовых и слаботочных розеток</span></li>
+                  <li><span class="idx">04</span><span>План пола с указанием всех использованных материалов</span></li>
+                  <li><span class="idx">05</span><span>План тёплого пола</span></li>
+                  <li><span class="idx">06</span><span>План расстановки сантехники с привязкой</span></li>
+                  <li><span class="idx">07</span><span>Потолочные планы с конструктивными узлами и разрезами</span></li>
+                  <li><span class="idx">08</span><span>Чертежи индивидуальных мебельных форм и декора</span></li>
+                  <li><span class="idx">09</span><span>Ведомости отделки</span></li>
+                  <li><span class="idx">10</span><span>Коммерческие предложения поставщиков материалов и сантехники</span></li>
+                </ol>
+              </div>
+              <figure class="tl-figure">
+                <div class="plan-frame"><img src="assets/img/plans/plan04.webp" alt="Фрагмент рабочей проектной документации" width="1487" height="871" loading="lazy"></div>
+                <figcaption class="hand plan-note">этот пакет<br>уходит на стройку</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <div class="tl-end" aria-hidden="true">
+            <p class="hand">дальше — стройка<br>и авторский надзор</p>
+          </div>
+
+        </div>
+
+        <div class="tl-foot">
+          <div class="tl-rail"><span class="tl-bar" id="tlBar"></span></div>
+          <div class="tl-dots" aria-hidden="true">
+            <span class="tl-dot">01</span><span class="tl-dot">02</span><span class="tl-dot">03</span><span class="tl-dot">04</span>
+          </div>
+        </div>
+      </div>    </div>
+  </section>
+﻿
+  <!-- ═══════════════ СЕКЦИЯ 4 · ОБО МНЕ + АНИМАЦИЯ ДОМА ═══════════════ -->
+  <section id="about" class="section border-t border-ink relative" aria-labelledby="about-title">
+    <div class="shell">
+      <div class="flex items-end justify-end gap-6">
+        <p class="meta hidden md:block">Обо мне</p>
+      </div>
+
+      <div class="mt-7 grid lg:grid-cols-12 gap-x-8 gap-y-10 items-start">
+
+        <h2 id="about-title" class="display display-l reveal max-w-[18ch] lg:col-span-7">Дом не должен быть безликим</h2>
+
+        <!-- портрет: на мобильном идёт сразу после заголовка -->
+        <figure class="about-photo reveal-img lg:col-span-4 lg:col-start-9 lg:row-span-2" style="order:1">
+          <img src="assets/img/portrait.webp" alt="Анастасия Брагинец с картиной для интерьера" width="1250" height="1600" loading="lazy">
+        </figure>
+
+        <div class="lg:col-span-7">
+          <div class="space-y-5 max-w-[50ch]">
+            <p class="body-text reveal">Меня зовут Анастасия, я дизайнер интерьера и художник. Обычно потребности в дизайн-проекте и в искусстве закрываются раздельно. Я закрываю обе.</p>
+            <p class="body-text reveal">Картины для интерьера я пишу сама — не подбираю типовой декор, а делаю его под ваш свет, вашу стену и ваш характер.</p>
+            <p class="body-text reveal">К каждому объекту подхожу как к отдельному произведению: со своим характером, своим светом и своим способом жить. Не обезличиваю и не автоматизирую — не подставляю шаблон в ваш метраж.</p>
+            <p class="body-text reveal">Когда всё продумано до мелочи, дом начинает дышать. И тогда он точно попадает в сердце — ваше и тех, кто приходит в гости.</p>
+          </div>
+
+          <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 reveal">
+            <p class="hand text-[1.55rem] -rotate-1">давайте знакомиться</p>
+            <a class="eyebrow inline-flex items-center gap-2 pen-underline" href="#contact">
+              Написать мне
+              <svg width="22" height="8" viewBox="0 0 22 8" fill="none" aria-hidden="true"><path d="M0 4h20M17 1l3 3-3 3" stroke="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ СЕКЦИЯ 5 · КОНТАКТ ═══════════════ -->
+  <section id="contact" class="section dark bg-ink text-cream border-t border-ink relative" aria-labelledby="contact-title">
+    <div class="section-plan section-plan--dark" aria-hidden="true"><img src="assets/img/plans/plan02.webp" alt="" width="827" height="1247" loading="lazy"></div>
+
+    <div class="shell relative">
+      <div class="flex items-end justify-end gap-6">
+        <p class="meta hidden md:block" style="color:rgba(242,237,228,.5)">Авторский интерьер · живопись</p>
+      </div>
+
+      <div class="mt-8 grid lg:grid-cols-12 gap-x-8 gap-y-16">
+
+        <!-- левая колонка -->
+        <div class="lg:col-span-6">
+          <h2 id="contact-title" class="display display-xl display-contact reveal">Рассчитать<br>стоимость</h2>
+          <p class="lead mt-8 max-w-[34ch] reveal" style="color:rgba(242,237,228,.78)">Расскажите про метраж и задачу — подберу для вас оптимальное решение.</p>
+          <p class="hand mt-6 text-[1.5rem] -rotate-1 reveal" style="color:rgba(242,237,228,.72)">первый разговор ни к чему не обязывает</p>
+
+          <div class="mt-12 space-y-px">
+            <a class="contact-row group" href="tel:+79295130428">
+              <span class="eyebrow eyebrow--light">Телефон</span>
+              <span class="contact-value">+7 929 513-04-28</span>
+            </a>
+            <a class="contact-row group" href="mailto:braginets.@mail.ru">
+              <span class="eyebrow eyebrow--light">Почта</span>
+              <span class="contact-value">braginets.@mail.ru</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- правая колонка: соцсети -->
+        <div class="lg:col-span-5 lg:col-start-8">
+          <p class="eyebrow eyebrow--light">Соцсети</p>
+          <ul class="social mt-6" role="list">
+            <li>
+              <a href="https://t.me/bragaa_n" target="_blank" rel="noopener noreferrer" aria-label="Telegram — открыть в новой вкладке">
+                <span class="social-box">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M9.05 15.5l-.4 5.35c.55 0 .79-.24 1.08-.52l2.58-2.46 5.35 3.92c.98.54 1.68.26 1.94-.9l3.52-16.5c.3-1.43-.53-2-1.48-1.65L1.9 10.36c-1.4.55-1.38 1.33-.24 1.68l4.9 1.53L17.4 6.2c.53-.35 1.02-.16.62.2z"/></svg>
+                </span>
+                <span class="social-name">Телеграм</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/bragaa.intr?igsh=MXZ1cDJzZmVnYW40bg%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram — открыть в новой вкладке">
+                <span class="social-box">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3.6" y="3.6" width="16.8" height="16.8"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.1" cy="6.9" r="1" fill="currentColor" stroke="none"/></svg>
+                </span>
+                <span class="social-name">Инстаграм</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.behance.net/74f3f67c" target="_blank" rel="noopener noreferrer" aria-label="Behance — открыть в новой вкладке">
+                <span class="social-box">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3.2 5.6v12.8M3.2 5.6h4.1a3.2 3.2 0 0 1 0 6.4H3.2M3.2 12h4.6a3.4 3.4 0 0 1 0 6.8H3.2"/><path d="M20.4 14.2h-7a3.5 3.5 0 0 1 7-.6 3.6 3.6 0 0 1-3.5 4.4 3.3 3.3 0 0 1-3-1.7"/><path d="M15.2 8h4.2"/></svg>
+                </span>
+                <span class="social-name">Behance</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://ru.pinterest.com/Braginets_Design/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest — открыть в новой вкладке">
+                <span class="social-box">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M9.8 20.2l2.2-8.4"/><path d="M9.8 12.6c-.5-2.4.9-4.6 3.2-4.6 1.9 0 3.1 1.3 3.1 3.2 0 2.3-1.3 4-3 4-.9 0-1.6-.7-1.4-1.6"/></svg>
+                </span>
+                <span class="social-name">Pinterest</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/79295130428" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp — открыть в новой вкладке">
+                <span class="social-box">
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5l-4.4 1.3 1.4-4.3A8.5 8.5 0 1 1 20.5 11.7z"/><path d="M8.7 8.3c.3-.6 1.2-.5 1.5.1l.7 1.5c.2.4 0 .8-.3 1l-.5.3c.4 1.2 1.4 2.2 2.6 2.6l.4-.5c.2-.3.6-.4 1-.2l1.5.7c.6.3.6 1.2 0 1.5-1 .5-2.1.6-3.1.2-2.6-1-4.6-3-5.6-5.6-.3-1-.3-1.7.1-2.6z"/></svg>
+                </span>
+                <span class="social-name">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://max.ru/u/f9LHodD0cOKV2m6dhh8g6VKo49j3tlS7f_T8dYNlxXjqPDJKiuAitUTyERg" target="_blank" rel="noopener noreferrer" aria-label="MAX — открыть в новой вкладке">
+                <span class="social-box">
+                  <span class="social-max" aria-hidden="true">MAX</span>
+                </span>
+                <span class="social-name">MAX</span>
+              </a>
+            </li>
+          </ul>
+
+          <a class="cta mt-14" href="https://t.me/bragaa_n" target="_blank" rel="noopener noreferrer">
+            <span>Написать в Telegram</span>
+            <svg width="34" height="9" viewBox="0 0 34 9" fill="none" aria-hidden="true"><path d="M0 4.5h32M28 .5l4 4-4 4" stroke="currentColor"/></svg>
+          </a>
+
+          <p class="caption mt-10" style="color:rgba(242,237,228,.5)">Пишите в удобном мессенджере — отвечу лично. Если хотите сначала посмотреть проекты, начните с портфолио.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════ ФУТЕР ═══════════════ -->
+<footer class="dark bg-ink text-cream">
+  <div class="shell">
+    <div class="border-t border-cream/20 py-12 grid lg:grid-cols-12 gap-x-8 gap-y-10 items-end">
+      <div class="lg:col-span-4">
+        <p class="eyebrow eyebrow--light">Bragn.</p>
+        <p class="caption mt-4" style="color:rgba(242,237,228,.62)">Дизайн интерьера и живопись.<br>Авторский надзор, рабочая документация, картины для интерьера.</p>
+      </div>
+
+      <div class="lg:col-span-3">
+        <nav aria-label="Навигация в подвале" class="flex flex-col gap-2">
+          <a class="foot-link" href="#projects">Портфолио</a>
+          <a class="foot-link" href="#process">Состав дизайн-проекта</a>
+          <a class="foot-link" href="#about">Обо мне</a>
+          <a class="foot-link" href="#contact">Контакт</a>
+        </nav>
+      </div>
+
+      <div class="lg:col-span-3">
+        <a class="foot-link" href="tel:+79295130428">+7 929 513-04-28</a>
+        <a class="foot-link mt-2 block" href="mailto:braginets.@mail.ru">braginets.@mail.ru</a>
+      </div>
+
+      <div class="lg:col-span-2 flex lg:justify-end">
+        <svg class="autograph" viewBox="0 0 902 430" width="150" height="71" role="img" aria-label="Подпись Bragn."><use href="#logo-sig"></use></svg>
+      </div>
+    </div>
+
+    <div class="border-t border-cream/20 py-5 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <p class="meta" style="color:rgba(242,237,228,.45)">© 2026 Bragn. · Анастасия Брагинец</p>
+      <a class="meta pen-underline" href="#top" style="color:rgba(242,237,228,.6)">Наверх ↑</a>
+    </div>
+  </div>
+</footer>
+
+<a class="call-fab" href="tel:+79295130428" aria-label="Позвонить: +7 929 513-04-28">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.7 3.6h2.9l1.5 3.9-2 1.4a12.3 12.3 0 0 0 6 6l1.4-2 3.9 1.5v2.9a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.7 5.8a2 2 0 0 1 2-2.2z"/></svg>
+</a>
+
+<!-- просмотр проекта -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр проекта" aria-hidden="true">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Закрыть">Закрыть ✕</button>
+  <figure class="lb-figure">
+    <img id="lbImg" alt="">
+    <figcaption class="lb-cap">
+      <span class="hand" id="lbCap"></span>
+      <span class="meta" id="lbCount"></span>
+    </figcaption>
+  </figure>
+  <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Предыдущий проект">←</button>
+  <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Следующий проект">→</button>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  // подпись в hero прячем до старта анимации, чтобы не мигала
+  document.documentElement.classList.add('pre-logo');
+
+  /* ─────────────────── 1. подпись рисуется от руки ─────────────────── */
+  function drawLogo() {
+    var svg = $('#heroLogo');
+    if (!svg || svg.dataset.drawn) return;
+    var fill = $('#logoFill', svg);
+    var strokes = $$('.pen', svg);
+    if (!fill || !strokes.length) return;
+    svg.dataset.drawn = '1';
+
+    function showAll() {
+      document.documentElement.classList.remove('pre-logo');
+      if (fill) fill.removeAttribute('mask');
+    }
+
+    var canAnimate = !reduce && typeof Element !== 'undefined' && Element.prototype.animate;
+    if (!canAnimate) { showAll(); return; }
+
+    // перо идёт по осевой и открывает настоящую букву — без «черновой» линии
+    var lens = strokes.map(function (p) { return p.getTotalLength(); });
+    var total = lens.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var t = 0, last = 0;
+
+    strokes.forEach(function (p, i) {
+      var share = lens[i] / total;
+      var dur = Math.round(Math.max(55, share * 1700 + 40));
+      var delay = Math.round(t * 1000);
+      t += share * 1.02;
+      last = Math.max(last, delay + dur);
+
+      p.style.strokeDasharray = lens[i] + ' ' + lens[i];
+      p.style.strokeDashoffset = lens[i];
+      p.animate(
+        [{ strokeDashoffset: lens[i] }, { strokeDashoffset: 0 }],
+        { duration: dur, delay: delay, easing: 'cubic-bezier(.45,.06,.3,1)', fill: 'both' }
+      );
+    });
+
+    document.documentElement.classList.remove('pre-logo');
+
+    window.setTimeout(function () {
+      if (fill) fill.removeAttribute('mask');
+    }, last + 260);
+    window.setTimeout(showAll, 4600);
+  }
+
+  drawLogo();
+
+  /* ─────────────────── 3. прогресс + состояние навигации ─────────────────── */
+  var nav = $('#nav');
+  var progress = $('#progress');
+  var heroPlan = $('.hero-plan');
+  var queued = false;
+
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (nav) nav.classList.toggle('is-scrolled', y > 24);
+    if (progress) {
+      progress.classList.toggle('is-on', y > 40);
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    if (heroPlan && !reduce && y < window.innerHeight * 1.2) {
+      heroPlan.style.transform = 'translate3d(0,' + (y * 0.06).toFixed(1) + 'px,0)';
+    }
+    queued = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!queued) { queued = true; window.requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  /* ─────────────────── 4. появление блоков ─────────────────── */
+  (function reveals() {
+    var targets = $$('.reveal, .reveal-img, .reveal-line');
+    if (!targets.length) return;
+    document.documentElement.classList.add('js-reveal');
+
+    var pending = targets.slice();
+    var queued = false, passes = 0;
+
+    function check() {
+      var line = (window.innerHeight || 800) * 0.94;
+      pending = pending.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) return true;
+        if (r.top < line) { el.classList.add('is-in'); return false; }
+        return true;
+      });
+      queued = false;
+      if (pending.length && passes < 3) { passes++; window.setTimeout(queue, 400); }
+    }
+    function queue() {
+      if (!queued) { queued = true; window.requestAnimationFrame(check); }
+    }
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    window.addEventListener('load', check);
+    check();
+    window.setTimeout(check, 900);
+  })();
+
+  /* ─────────────────── 5. портфолио: фильтр и раскладка ─────────────────── */
+  var grid = $('#grid');
+  var cards = grid ? $$('.card', grid) : [];
+  var moreBtn = $('#moreBtn');
+  var PAGE = 10, limit = PAGE, activeFilter = 'all';
+
+  function filteredCards() {
+    return cards.filter(function (c) {
+      return activeFilter === 'all' || c.dataset.cat === activeFilter;
+    });
+  }
+  function visibleCards() {
+    return cards.filter(function (c) { return !c.classList.contains('is-hidden'); });
+  }
+
+  function layout() {
+    if (!cards.length) return;
+    var w = window.innerWidth;
+    var budget = 12;
+
+    visibleCards().forEach(function (card, i) {
+      var r = parseFloat(card.dataset.ratio) || 0.8;
+      var want = w >= 1200 ? (r > 1.15 ? 6 : (r < 0.72 ? 3 : 4))
+               : w >= 768   ? (r > 1.15 ? 6 : 3)
+               : 12;
+
+      if (w >= 768 && budget <= 2) budget = 12;
+      var span = w >= 768 ? Math.min(want, budget) : 12;
+      budget -= w >= 768 ? span : 0;
+      // на телефоне мелкие кадры идут по два в ряд — страница короче
+      if (w < 768 && card.dataset.pair) span = 6;
+
+      card.style.gridColumn = 'span ' + span;
+      // горизонтальные кадры не смещаем вниз — они должны стоять по верхней линии ряда
+      var mt = r > 1.15 ? 0 : (i % 3) * 44;
+      card.style.marginTop = w >= 768 ? mt + 'px' : '0px';
+
+      var media = $('.card-media', card);
+      if (media) media.style.aspectRatio = String(r);
+      var empty = $('.card-empty', card);
+      if (empty) empty.style.aspectRatio = '0.8';
+    });
+  }
+
+  function counts() {
+    var out = $('#shownCount');
+    if (out) out.textContent = visibleCards().length;
+  }
+
+  function syncMore() {
+    if (!moreBtn) return;
+    var left = Math.max(0, filteredCards().length - limit);
+    moreBtn.classList.toggle('is-off', left === 0);
+  }
+
+  function stagger(list, offset) {
+    if (reduce) return;
+    list.forEach(function (card, i) {
+      card.style.animation = 'none';
+      void card.offsetWidth;
+      card.style.animation = 'cardIn .85s cubic-bezier(.16,1,.3,1) ' + ((offset + i) * 40) + 'ms both';
+    });
+  }
+
+  function render(anim) {
+    var list = filteredCards();
+    cards.forEach(function (c) { c.classList.add('is-hidden'); });
+    list.slice(0, limit).forEach(function (c) { c.classList.remove('is-hidden'); });
+    layout(); counts(); syncMore();
+    if (anim) stagger(visibleCards(), 0);
+    window.dispatchEvent(new Event('resize'));
+  }
+
+  if (cards.length) {
+    $$('.filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        $$('.filter-btn').forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        activeFilter = btn.getAttribute('data-filter');
+        limit = PAGE;
+        render(true);
+      });
+    });
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        var before = visibleCards().length;
+        limit += PAGE;
+        filteredCards().slice(0, limit).forEach(function (c) { c.classList.remove('is-hidden'); });
+        layout(); counts(); syncMore();
+        stagger(visibleCards().slice(before), before);
+        window.dispatchEvent(new Event('resize'));
+      });
+    }
+
+    render(false);
+  }
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(layout, 160);
+  });
+
+  /* ─────────────────── 6. процесс: таймлайн вбок ─────────────────── */
+  (function timeline() {
+    var wrap = $('#tlWrap');
+    var track = $('#tlTrack');
+    var bar = $('#tlBar');
+    if (!wrap || !track) return;
+
+    var mq = window.matchMedia('(min-width:1024px)');
+    var enabled = false, maxX = 0, ticking = false;
+
+    function update() {
+      ticking = false;
+      if (!enabled) return;
+      var top = wrap.getBoundingClientRect().top + (window.pageYOffset || 0);
+      var y = window.pageYOffset || 0;
+      var p = (y - top) / Math.max(1, maxX);
+      p = Math.max(0, Math.min(1, p));
+      track.style.transform = 'translate3d(' + (-p * maxX).toFixed(1) + 'px,0,0)';
+      if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+    }
+    function measure() {
+      enabled = mq.matches && !reduce;
+      if (!enabled) {
+        wrap.style.height = '';
+        track.style.transform = '';
+        if (bar) bar.style.width = '0%';
+        return;
+      }
+      var last = track.lastElementChild;
+      var byScroll = track.scrollWidth - window.innerWidth;
+      var byLast = last ? (last.getBoundingClientRect().right - track.getBoundingClientRect().left) - window.innerWidth : 0;
+      maxX = Math.max(0, byScroll, byLast);
+      wrap.style.height = (window.innerHeight + maxX) + 'px';
+      update();
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    if (mq.addEventListener) mq.addEventListener('change', measure);
+    else if (mq.addListener) mq.addListener(measure);
+    measure();
+  })();
+
+  function closeMenu() {}
+
+  /* ─────────────────── 8. просмотр проекта ─────────────────── */
+  (function lightbox() {
+    var lb = $('#lb');
+    if (!lb || !cards.length) return;
+    var img = $('#lbImg'), cap = $('#lbCap'), counter = $('#lbCount');
+    var btnClose = $('#lbClose'), btnPrev = $('#lbPrev'), btnNext = $('#lbNext');
+    var current = -1, lastFocus = null;
+
+    function list() {
+      return cards.filter(function (c) { return !c.classList.contains('is-hidden'); })
+                  .map(function (c) { return $('.card-btn', c); })
+                  .filter(Boolean);
+    }
+    function show(i) {
+      var items = list();
+      if (!items.length) return;
+      current = (i + items.length) % items.length;
+      var b = items[current];
+      img.src = b.dataset.src;
+      img.alt = b.dataset.caption || '';
+      cap.textContent = b.dataset.caption || '';
+      counter.textContent = ('0' + (current + 1)).slice(-2) + ' / ' + ('0' + items.length).slice(-2);
+    }
+    function open(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-locked');
+      if (btnClose) btnClose.focus();
+    }
+    function close() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-locked');
+      if (lastFocus) lastFocus.focus();
+    }
+
+    cards.forEach(function (card) {
+      var b = $('.card-btn', card);
+      if (!b) return;
+      b.addEventListener('click', function () { open(list().indexOf(b)); });
+    });
+
+    if (btnClose) btnClose.addEventListener('click', close);
+    if (btnPrev) btnPrev.addEventListener('click', function () { show(current - 1); });
+    if (btnNext) btnNext.addEventListener('click', function () { show(current + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) {
+        if (e.key === 'Escape') closeMenu();
+        return;
+      }
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  })();
+
+  /* ─────────────────── 9. текущий раздел в меню ─────────────────── */
+  (function spy() {
+    var links = $$('[data-nav]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (l) {
+      var id = l.getAttribute('href');
+      var sec = id && document.querySelector(id);
+      if (sec) map[sec.id] = l;
+    });
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) { l.classList.remove('is-current'); });
+        if (map[e.target.id]) map[e.target.id].classList.add('is-current');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Object.keys(map).forEach(function (id) { nio.observe(document.getElementById(id)); });
+  })();
+
+})();
+</script>
+</body>
+</html>
